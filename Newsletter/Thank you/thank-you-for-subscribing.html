@@ -1,0 +1,124 @@
+<!-- %%[
+set @channel = RequestParameter("channel")
+]%%
+<script type="javascript" runat="server">
+Platform.Load("core","1"); 
+var ip = Platform.Request.ClientIP();
+var browser = Platform.Request.Browser();
+Variable.SetValue("@ip",ip);
+Variable.SetValue("@broswer",browser);
+</script> -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="/Newsletter/Thank you/thank-you-for-subscribing.css">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<!--<div id="layout" style="width: 1144px; height: 391px;">-->
+	<div id="layout" >
+		<table cellpadding="0" cellspacing="0" width="300;" role="presentation" style="margin-left: auto; margin-right: auto;">
+			<tbody>
+				<tr>
+					<td class="layout_spacing">
+							<div class="text1_wrapper">
+								<div class="text1">Sign Up</div>
+							</div>
+							<div class="text2_wrapper">
+								<div class="text2">Thank you for subscribing!</div>
+							</div>
+							<form id="newsletterSignUp" method="post" action="#">
+								<div id="form_wrapper">
+									<div id="form">
+
+										<!-- Hidden Fields -->
+										<div style="float: none; clear: both">
+											<input value="%%=v(@channel)=%%" type="hidden" name="channel" />
+											<input value="%%=v(@ip)=%%" type="hidden" name="ip" />
+											<input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
+											<input value="In-line sign-up" type="hidden" name="source" />
+										</div>
+
+										<!-- First Name -->
+										<div class="fieldset form_spacing">
+											<label class="form_labels form_labels_hide" for="form_input_first_name">First Name</label>
+											<input class="form_inputs" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)"/>
+											<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
+											<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
+										</div>
+
+										<!-- Last Name -->
+										<div class="fieldset form_spacing">
+											<label class="form_labels form_labels_hide" for="form_input_last_name">Last Name</label>
+											<input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)"/>
+											<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
+											<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
+										</div>
+
+										<!-- Email Address -->
+										<div class="fieldset form_spacing">
+											<label class="form_labels form_labels_hide" for="form_input_email">Email Address</label>
+											<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)"/>
+											<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
+											<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
+										</div>
+
+										<!-- Checkboxes -->
+										<div class="fieldset form_spacing flex">
+											<div class="checkbox_block">
+											  <input type="checkbox" id="checkbox1" class="checkbox"/>
+											</div>
+                                 <div class="label_block">
+                                    <label class="checkbox_label" for="checkbox1">Yes, I would like to recieve the Daily Newsletter and communications from LocalNews</label>
+                                 </div>
+										</div>
+
+                              <div class="fieldset form_spacing flex">
+											<div class="checkbox_block">
+											  <input type="checkbox" id="checkbox2" class="checkbox"/>
+											</div>
+                                 <div class="label_block">
+                                    <label class="checkbox_label" for="checkbox2">Yes, I would like to recieve the Weather Newsletter from LocalNews</label>
+                                 </div>
+										</div>
+
+                              <div class="fieldset form_spacing flex">
+											<div class="checkbox_block">
+											  <input type="checkbox" id="checkbox3" class="checkbox"/>
+											</div>
+                                 <div class="label_block">
+											  <label class="checkbox_label" for="checkbox3">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions" href="#">Terms &amp; Conditions</a> and the <a class="privacy_policy" href="#">Privacy Policy</a></label>
+                                 </div>
+										</div>
+
+										<!-- Sign Up - Button -->
+										<div id="button1_wrapper" class="fieldset">
+											<button id="button1" class="button1" aria-label="Submit Modal Form" disabled>
+												Sign Up
+											</button>
+										</div>
+
+									</div>
+								</div>
+							</form>
+							<!-- <div id="thxlayout" style="display: none">
+								<div id="thxtext1_wrapper">
+									<div id="thxtext1">Thank you for subscribing!</div>
+								</div>
+							</div> -->
+						<!-- </div> -->
+						<!-- <span style="display: none" class="error-bubble" id="error_bubble">
+							<span class="error-message" id="error_message"></span>
+							<span id="error_close">x</span>
+						</span> -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
