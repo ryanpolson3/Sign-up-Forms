@@ -30,24 +30,68 @@ Variable.SetValue("@broswer",browser);
         }
       };
     </script> -->
-	<link rel="stylesheet" href="/Newsletter/Sign Up/sign-up.css">
+
+	 <!-- <script>
+      window.dataLayer = window.dataLayer || [];
+    </script> -->
+    <!-- Google Tag Manager -->
+    <!-- <script>(function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({
+          'gtm.start':
+          new Date().getTime(),event:'gtm.js'}
+                 );
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+      }
+            )(window,document,'script','dataLayer','GTM-NKJ68BG');
+    </script> -->
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager (noscript) -->
+    <!-- <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKJ68BG"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript> -->
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- <script>
+      var sendToUDL = function(dLdata) {
+        if (dLdata && dLdata.constructor == Object && window.JSON) {
+          window.dataLayer.push({
+            'event':'newsletter_signup_complete',
+          }
+                               );
+          console.log('data layer push complete');
+          console.log(window.dataLayer);
+        }
+        else {
+          console.log('ERROR: cross-domain messaging');
+        }
+      };
+    </script> -->
+	<link rel="stylesheet" href="/sign-up-modal.css">
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
 	<!-- Font Awesome -->
-	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>
-
 <body class="gradient1">
 	<div class="gradient2">
 		<div class="layout" >
 			<div class="layout_wrapper">
-				<div id="text1_wrapper">
-					<div class="text1">Sign Up</div>
-				</div>
-				<div style="display: block" id="text2_wrapper">
+				<!-- Close Icon -->
+				<i class="fa fa-xmark close_icon"></i>
+
+				<!-- Headline Text -->
+				<div id="text2_wrapper">
 					<div class="text2">Sign up for our newsletter</div>
 				</div>
-				<form style="display: block" id="newsletterSignUp" method="post" action="#">
+
+				<!-- Form -->
+				<form id="newsletterSignUp" method="post" action="#">
 					<div class="form_wrapper">
 						<div class="form">
 
@@ -118,15 +162,24 @@ Variable.SetValue("@broswer",browser);
 								</button>
 							</div>
 
+							<!-- No thank you -->
+							<div class="fieldset nothx_wrapper">
+								<a class="nothxtext" href="#" >No, thank you</a>
+							</div>
+
 						</div>
 					</div>
 				</form>
+
+				<!-- Thank you for subscribing -->
 				<div id="thxlayout" style="display: none">
-					<div class="thxtext1_wrapper">
+					<div class="thxtext_wrapper">
 						<div class="thxtext1">Thank you for subscribing!</div>
-						<div class="thxtext2">You may now <a href="#" target="_blank" class="browse-more-news">browse more news</a></div>
+						<div class="thxtext2">You may now <span class="close-this-notice">close this notice</span></div>
 					</div>
 				</div>
+
+				<!-- Error bubble -->
 				<!-- <span id="error_bubble" class="error-bubble" style="display: none">
 					<span id="error_message" class="error-message"></span>
 					<span id="error_close">x</span>
@@ -166,7 +219,7 @@ Variable.SetValue("@broswer",browser);
     });
     function processJSONPResponse(response) {
       $("#thxlayout").show();
-      $("#text1_wrapper").hide();
+      $("#close_wrapper").hide();
       $("#text2_wrapper").hide();
       $("#newsletterSignUp").hide();
     }
