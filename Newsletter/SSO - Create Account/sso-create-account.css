@@ -376,14 +376,25 @@ input:focus-visible {
   color: var(--gray-medium-dark);
 }
 
-/* .form_inputs_hover {
-    border-color: var(--grey-light);
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 2px;
-    background: rgb(255, 255, 255);
-} */
+.circle {
+  position: relative;
+  top: -38px;
+  right: 20px;
+  float: right;
+  box-sizing: border-box;
+  height: 22px;
+  width: 22px;
+  border: 1.5px solid var(--lavender-gray);
+  border-radius: 11px;
+  background-color: var(--white);
+  color: var(--lavender-gray);
+  font-family: var(--open-sans-normal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* Input Errors/Help */
 .form_inputs_error {
   border-color: var(--grey-light);
   border-style: solid;
@@ -475,7 +486,8 @@ input[type="checkbox"]:checked:after {
 .terms_and_conditions,
 .privacy_policy,
 .browse-more-news,
-.close-this-notice {
+.close-this-notice,
+.signintext {
   font-family: var(--open-sans-normal);
   text-decoration: none;
   color: var(--bright-navy-blue);
@@ -483,12 +495,11 @@ input[type="checkbox"]:checked:after {
 }
 
 
-/* Sign Up - Button */
+/* Continue - Button */
 .continue_wrapper {
   display: block;
   width: 100%;
   height: 60px;
-  z-index: 9000;
   padding-top: 30px;
 }
 
@@ -513,17 +524,18 @@ input[type="checkbox"]:checked:after {
   color: var(--white);
 }
 
-/* No, thank you */
-.nothx_wrapper {
-  padding-top: 20px;
+/* Have an account? */
+.account_wrapper {
+  padding-top: 25px;
 }
-.nothxtext {
+
+.account_text {
   display: block;
   font-family: var(--open-sans-normal);
   color: var(--grey-very-dark);
   letter-spacing: 0;
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 12px;
   text-decoration: none;
   text-align: center;
 }
