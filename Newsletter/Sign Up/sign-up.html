@@ -1,4 +1,4 @@
-<!-- %%[
+%%[
 set @channel = RequestParameter("channel")
 ]%%
 <script type="javascript" runat="server">
@@ -7,14 +7,14 @@ var ip = Platform.Request.ClientIP();
 var browser = Platform.Request.Browser();
 Variable.SetValue("@ip",ip);
 Variable.SetValue("@broswer",browser);
-</script> -->
+</script>
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<!-- <script>
+	<script>
       var sendToUDL = function(dLdata) {
         if (dLdata && dLdata.constructor == Object && window.JSON) {
           window.dataLayer = window.dataLayer || [];
@@ -29,7 +29,7 @@ Variable.SetValue("@broswer",browser);
           console.log('ERROR: cross-domain messaging');
         }
       };
-    </script> -->
+    </script>
 
 	 <!-- <script>
       window.dataLayer = window.dataLayer || [];
@@ -200,6 +200,7 @@ Variable.SetValue("@broswer",browser);
       $("#newsletterSignUp").submit(function (e) {
 				e.preventDefault();
 				data = $(this).serialize();
+				console.log(data);
 				sendToUDL({event:'newsletter_signup_complete'})
 				$(this).find("input").removeClass("error");
 				if ($(this).find("input[name='first_name']").val().length > 1 && $(this).find("input[name='last_name']").val().length > 1 && $(this).find("input[name='email']").val().length > 0 && validateEmail($(this).find("input[name='email']").val())) {
@@ -223,6 +224,8 @@ Variable.SetValue("@broswer",browser);
         });
       });
     });
+
+	 // Function hides form and displays thank you message
     function processJSONPResponse(response) {
       $("#thxlayout").show();
       $("#text1_wrapper").hide();
