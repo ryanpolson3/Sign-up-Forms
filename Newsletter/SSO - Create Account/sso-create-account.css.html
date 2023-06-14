@@ -114,7 +114,7 @@ Variable.SetValue("@broswer",browser);
 
 							<!-- First Name -->
 							<div class="fieldset form_spacing">
-								<label class="form_labels form_labels_hide" for="form_input_first_name">First Name</label>
+								<label id="form_labels" class="form_labels form_labels_hide" for="form_input_first_name">First Name</label>
 								<input class="form_inputs" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name" required/>
 								<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
 								<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
@@ -122,7 +122,7 @@ Variable.SetValue("@broswer",browser);
 
 							<!-- Last Name -->
 							<div class="fieldset form_spacing">
-								<label class="form_labels form_labels_hide" for="form_input_last_name">Last Name</label>
+								<label id="form_labels" class="form_labels form_labels_hide" for="form_input_last_name">Last Name</label>
 								<input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name" required/>
 								<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
 								<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
@@ -130,11 +130,24 @@ Variable.SetValue("@broswer",browser);
 
 							<!-- Screen Name -->
 							<div class="fieldset form_spacing">
-								<label class="form_labels" for="form_input_screen_name">Screen Name <span class="label_span">(Visible to others)</span></label>
+								<label id="form_labels" class="form_labels" for="form_input_screen_name">Screen Name <span class="label_span">(Visible to others)</span></label>
 								<input class="form_inputs" type="text" id="form_input_screen_name" class="form_inputs" name="screen_name" placeholder="Screen Name (Visible to Others)" required/>
-								<span class="circle">?</span>
+								<span id="circle" class="circle">?</span>
 								<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
 								<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
+							</div>
+
+							<!-- Screen Name Criteria -->
+							<div class="fieldset screen-name-criteria_wrapper">
+								<div class="checklist_txt1">Screen name criteria</div>
+								<div class="checklist">
+									<i class="fa-solid fa-check"></i>
+									<div class="checklist_txt2">5 Characters or more</div>
+								</div>
+								<div class="checklist">
+									<i class="fa-solid fa-check"></i>
+									<div class="checklist_txt2">Alphanumeric (A-Z, 0-9), and periods (.)</div>
+								</div>
 							</div>
 
 							<!-- Checkboxes -->
@@ -239,6 +252,15 @@ Variable.SetValue("@broswer",browser);
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
     }
+
+	 // Input focus shows/hides labels
+	 $(function() {
+		const label = $('#form_labels');
+		const circle = $('#circle');
+		
+	 });
+
+	 // Adds/Removes disabled attribute to form button
 	 $(function() {
 		const button = $('#continue');
 		button.attr('disabled', 'disabled');

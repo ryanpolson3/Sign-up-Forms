@@ -197,7 +197,7 @@ body.loading #modal_loading {
     position: relative;
     top: 50px;
     padding: 70px 0 0 0;
-    height: 670px;
+    height: 760px;
     box-shadow: 0 5px 10px 0 rgba(45,45,45,0.2);
   }
   .layout_wrapper {
@@ -400,6 +400,42 @@ input:focus-visible,
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Screen Name Criteria */
+.screen-name-criteria_wrapper {
+  width: 90%;
+  margin-top: -16px;
+}
+
+.checklist {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 6px;
+} 
+
+.fa-check {
+  color: var(--green-lime);
+  width: 12px;
+  height: 15px;
+}
+
+.checklist_txt1,
+.checklist_txt2  {
+  color: var(--grey-very-dark);
+  font-family: var(--open-sans-normal);
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 13px;
+}
+
+.checklist_txt1 {
+  padding-bottom: 4px;
+}
+
+.checklist_txt2 {
+  padding-left: 10px;
 }
 
 /* Input Errors/Help */
