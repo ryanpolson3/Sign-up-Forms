@@ -103,26 +103,26 @@ Variable.SetValue("@broswer",browser);
 
 							<!-- First Name -->
 							<div class="fieldset form_spacing">
-								<label class="form_labels form_labels_hide" for="form_input_first_name">First Name</label>
-								<input class="form_inputs" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)"/>
-								<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
-								<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
+								<input class="form_inputs form_input_error" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)"/>
+								<label class="form_labels form_label_error" for="form_input_first_name">First Name</label>
+								<div id="form_input_email_help" class="form_inputs_help" style="display: block;">Please provide your email address</div>
+								<div id="form_input_email_error_text" class="form_inputs_error_text"></div>
 							</div>
 
 							<!-- Last Name -->
 							<div class="fieldset form_spacing">
-								<label class="form_labels form_labels_hide" for="form_input_last_name">Last Name</label>
 								<input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)"/>
+								<label class="form_labels" for="form_input_last_name">Last Name</label>
 								<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
 								<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
 							</div>
 
 							<!-- Email Address -->
 							<div class="fieldset form_spacing">
-								<label class="form_labels form_labels_hide" for="form_input_email">Email Address</label>
 								<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required/>
-								<div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
-								<div id="form_input_email_error_text" class="form_inputs_error_text"></div>
+								<label class="form_labels" for="form_input_email">Email Address</label>
+								<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
+								<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
 							</div>
 
 							<!-- Checkboxes -->
