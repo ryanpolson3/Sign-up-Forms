@@ -198,7 +198,7 @@ body.loading #modal_loading {
     position: relative;
     top: 50px;
     padding: 70px 0 0 0;
-    height: 670px;
+    height: 760px;
     box-shadow: 0 5px 10px 0 rgba(45,45,45,0.2);
   }
   .layout_wrapper {
@@ -365,14 +365,13 @@ input:focus + label {
   color: var(--red-error);
   font-family: var(--open-sans-normal);
   font-size: 11px;
-  margin-top: 2px;
+  margin-top: -15px;
   margin-left: 2px;
   overflow: hidden;
   width: 100%;
 }
 
 .form_inputs_error_text {
-  display: none;
   text-align: left;
   color: var(--red-error);
   font-family: var(--open-sans-normal);

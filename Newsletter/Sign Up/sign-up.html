@@ -105,24 +105,36 @@ Variable.SetValue("@broswer",browser);
 							<div class="fieldset form_spacing">
 								<input class="form_inputs form_input_error" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)"/>
 								<label class="form_labels form_label_error" for="form_input_first_name">First Name</label>
-								<div id="form_input_email_help" class="form_inputs_help" style="display: block;">Please provide your email address</div>
-								<div id="form_input_email_error_text" class="form_inputs_error_text"></div>
+								<div id="form_input_first_name_help" class="form_inputs_help" >
+									Please provide your first name
+								</div>
+								<div id="form_input_first_name_error_text" class="form_inputs_error_text">
+									First name should only contain letters
+								</div>
 							</div>
 
 							<!-- Last Name -->
 							<div class="fieldset form_spacing">
-								<input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)"/>
-								<label class="form_labels" for="form_input_last_name">Last Name</label>
-								<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
-								<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
+								<input class="form_inputs form_input_error" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)"/>
+								<label class="form_labels form_label_error" for="form_input_last_name">Last Name</label>
+								<div id="form_input_last_name_help" class="form_inputs_help" style="display: block;">
+									Please provide your last name
+								</div>
+								<div id="form_input_last_name_error_text" class="form_inputs_error_text" style="display: block;">
+									Last name should only contain letters
+								</div>
 							</div>
 
 							<!-- Email Address -->
 							<div class="fieldset form_spacing">
-								<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required/>
-								<label class="form_labels" for="form_input_email">Email Address</label>
-								<!-- <div id="form_input_email_help" class="form_inputs_help" style="display: none"></div>
-								<div id="form_input_email_error_text" class="form_inputs_error_text"></div> -->
+								<input class="form_inputs form_input_error" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required/>
+								<label class="form_labels form_label_error" for="form_input_email">Email Address</label>
+								<div id="form_input_email_help" class="form_inputs_help" style="display: block">
+									Please provide your email address
+								</div>
+								<div id="form_input_email_error_text" class="form_inputs_error_text" style="display: block;">
+									Email does not meet requirments
+								</div>
 							</div>
 
 							<!-- Checkboxes -->
