@@ -19,6 +19,7 @@
   --bright-navy-blue: #2078C9;
   --fun-blue: #1E609D;
   --blue-st-patricks: #1f3f66;
+  --tangaroa-blue: #122B42;
   --green-lime: #5bcd3e;
   --red: #ff0800;
   --cg-red: #dd3b38;
@@ -388,6 +389,10 @@ input:focus + label {
 }
 
 /* Checkboxes */
+.checkbox_wrapper {
+  padding-bottom: 25px
+}
+
 .flex {
   display: flex;
 }
@@ -478,9 +483,21 @@ input[type="checkbox"]:checked:after {
   cursor: pointer;
 }
 
+.sign-up:hover {
+  border-radius: 10px;
+  background-color: var(--tangaroa-blue);
+  box-shadow: 0 5px 10px 0 rgba(45,45,45,0.2);
+}
+
+.sign-up:active {
+  border-radius: 10px;
+  background-color: #1F3F66;
+}
+
 .sign-up:disabled {
   background-color: var(--grey-very-light);
   color: var(--white);
+  box-shadow: none;
 }
 
 /* Thank you for subscribing */
