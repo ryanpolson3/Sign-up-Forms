@@ -365,7 +365,9 @@ input:focus + label {
   text-align: left;
   color: var(--red-error);
   font-family: var(--open-sans-normal);
-  font-size: 11px;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 17px;
   margin-top: -15px;
   margin-left: 2px;
   overflow: hidden;
@@ -376,7 +378,9 @@ input:focus + label {
   text-align: left;
   color: var(--red-error);
   font-family: var(--open-sans-normal);
-  font-size: 11px;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 17px;
   margin-top: 2px;
   margin-left: 2px;
   overflow: hidden;
