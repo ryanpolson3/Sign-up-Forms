@@ -387,8 +387,8 @@ input:focus + label {
   display: none;
 }
 
-/* Hide Labels */
-.form_labels_hide {
+/* Hide Elements */
+.hide {
   display: none;
 }
 

@@ -103,36 +103,36 @@ Variable.SetValue("@broswer",browser);
 
 							<!-- First Name -->
 							<div class="fieldset form_spacing">
-								<input class="form_inputs form_input_error" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)"/>
-								<label class="form_labels form_label_error" for="form_input_first_name">First Name</label>
-								<div id="form_input_first_name_help" class="form_inputs_help" >
+								<input class="form_inputs" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)"/>
+								<label class="form_labels" for="form_input_first_name">First Name</label>
+								<div id="form_input_first_name_help" class="form_inputs_help hide" >
 									Please provide your first name
 								</div>
-								<div id="form_input_first_name_error_text" class="form_inputs_error_text">
+								<div id="form_input_first_name_error_text" class="form_inputs_error_text hide">
 									First name should only contain letters
 								</div>
 							</div>
 
 							<!-- Last Name -->
 							<div class="fieldset form_spacing">
-								<input class="form_inputs form_input_error" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)"/>
-								<label class="form_labels form_label_error" for="form_input_last_name">Last Name</label>
-								<div id="form_input_last_name_help" class="form_inputs_help" style="display: block;">
+								<input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)"/>
+								<label class="form_labels" for="form_input_last_name">Last Name</label>
+								<div id="form_input_last_name_help" class="form_inputs_help hide">
 									Please provide your last name
 								</div>
-								<div id="form_input_last_name_error_text" class="form_inputs_error_text" style="display: block;">
+								<div id="form_input_last_name_error_text" class="form_inputs_error_text hide">
 									Last name should only contain letters
 								</div>
 							</div>
 
 							<!-- Email Address -->
 							<div class="fieldset form_spacing">
-								<input class="form_inputs form_input_error" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required/>
-								<label class="form_labels form_label_error" for="form_input_email">Email Address</label>
-								<div id="form_input_email_help" class="form_inputs_help" style="display: block">
+								<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required/>
+								<label class="form_labels" for="form_input_email">Email Address</label>
+								<div id="form_input_email_help" class="form_inputs_help hide">
 									Email address is required
 								</div>
-								<div id="form_input_email_error_text" class="form_inputs_error_text" style="display: block;">
+								<div id="form_input_email_error_text" class="form_inputs_error_text hide">
 									Please enter a valid email address
 								</div>
 							</div>
@@ -165,7 +165,7 @@ Variable.SetValue("@broswer",browser);
 										<label class="checkbox_label" for="checkbox3">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions" href="https://www.google.com/" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy" href="https://www.google.com/" target="_blank">Privacy Policy</a></label>
 									</div>
 								</div>
-								<div id="form_input_checkbox_help" class="form_inputs_help" style="display: block">
+								<div id="form_input_checkbox_help" class="form_inputs_help hide">
 									You must agree to the terms and conditions and the privacy policy in order to sign up for our newsletters
 								</div>
 							</div>
@@ -201,10 +201,18 @@ Variable.SetValue("@broswer",browser);
 			e.preventDefault();
 			data = $(this).serialize();
 			sendToUDL({event:'newsletter_signup_complete'})
-			$(this).find("input").removeClass("form_input_error");
-			$(this).find("label").removeClass("form_label_error");
-			$(this).find(".form_input_first_name_help").addClass("error");
-			$(this).find(".form_input_first_name_error_text").addClass("error");
+			$(this).find(".form_inputs").addClass("form_input_error");
+			$(this).find(".form_labels").addClass("form_label_error");
+
+			//$(this).find("#form_input_first_name_help").addClass("hide");
+			//$(this).find("#form_input_first_name_error_text").addClass("hide");
+			//$(this).find("#form_input_last_name_help").addClass("hide");
+			//$(this).find("#form_input_last_name_error_text").addClass("hide");
+			//$(this).find("#form_input_email_help").addClass("hide");
+			//$(this).find("#form_input_email_error_text").addClass("hide");
+			//$(this).find("#form_input_checkbox_help").addClass("hide");
+
+
 
 			if ($(this).find("input[name='first_name']").val().length > 1 && $(this).find("input[name='last_name']").val().length > 1 && $(this).find("input[name='email']").val().length > 0 && validateEmail($(this).find("input[name='email']").val())) {
 					//$(this).find("input[name='first_name'],input[name='last_name'],input[name='email']").removeClass("error");
