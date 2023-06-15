@@ -108,9 +108,9 @@ Variable.SetValue("@broswer",browser);
 								<div id="form_input_first_name_help" class="form_inputs_help hide" >
 									Please provide your first name
 								</div>
-								<div id="form_input_first_name_error_text" class="form_inputs_error_text hide">
+								<!-- <div id="form_input_first_name_error_text" class="form_inputs_error_text hide">
 									First name should only contain letters
-								</div>
+								</div> -->
 							</div>
 
 							<!-- Last Name -->
@@ -120,15 +120,15 @@ Variable.SetValue("@broswer",browser);
 								<div id="form_input_last_name_help" class="form_inputs_help hide">
 									Please provide your last name
 								</div>
-								<div id="form_input_last_name_error_text" class="form_inputs_error_text hide">
+								<!-- <div id="form_input_last_name_error_text" class="form_inputs_error_text hide">
 									Last name should only contain letters
-								</div>
+								</div> -->
 							</div>
 
 							<!-- Email Address -->
 							<div class="fieldset form_spacing">
 								<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required/>
-								<label class="form_labels" for="form_input_email">Email Address</label>
+								<label class="form_labels" name="email" for="form_input_email">Email Address</label>
 								<div id="form_input_email_help" class="form_inputs_help hide">
 									Email address is required
 								</div>
@@ -201,8 +201,8 @@ Variable.SetValue("@broswer",browser);
 			e.preventDefault();
 			data = $(this).serialize();
 			sendToUDL({event:'newsletter_signup_complete'})
-			$(this).find(".form_inputs").addClass("form_input_error");
-			$(this).find(".form_labels").addClass("form_label_error");
+			//$(this).find(".form_inputs").addClass("form_input_error");
+			//$(this).find(".form_labels").addClass("form_label_error");
 
 			//$(this).find("#form_input_first_name_help").addClass("hide");
 			//$(this).find("#form_input_first_name_error_text").addClass("hide");
@@ -215,9 +215,16 @@ Variable.SetValue("@broswer",browser);
 
 
 			if ($(this).find("input[name='first_name']").val().length > 1 && $(this).find("input[name='last_name']").val().length > 1 && $(this).find("input[name='email']").val().length > 0 && validateEmail($(this).find("input[name='email']").val())) {
-					//$(this).find("input[name='first_name'],input[name='last_name'],input[name='email']").removeClass("error");
+
+					$(this).find("input[name='first_name'],input[name='last_name'],input[name='email']").removeClass("form_input_error").removeClass("form_label_error");
+
         	} else {
-				//$(this).find("input[name='first_name']").val().length < 1 ? $(this).find("input[name='first_name']").addClass("error") : $(this).find("input[name='first_name']").removeClass("error");
+
+				$(this).find("input[name='email']").val().length < 1 ? $(this).find("input[name='email']").addClass("form_input_error") : $(this).find("input[name='email']").removeClass("form_input_error");
+
+				$(this).find("label[name='email']").val().length < 1 ? $(this).find("label[name='email']").addClass("form_label_error") : $(this).find("label[name='email']").removeClass("form_label_error");
+
+
 				//$(this).find("input[name='last_name']").val().length < 1 ? $(this).find("input[name='last_name']").addClass("error") : $(this).find("input[name='last_name']").removeClass("error");
 				//$("#formAlert").html("Please provide a valid name and/or last name.");
 				return 0;

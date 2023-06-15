@@ -357,7 +357,6 @@ input:focus + label {
 
 .form_label_error {
   color: var(--red-error) !important;
-  margin-left: 3px;
   font-size: 12px;
 }
 
