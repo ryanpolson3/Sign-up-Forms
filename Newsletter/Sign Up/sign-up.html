@@ -104,7 +104,7 @@ Variable.SetValue("@broswer",browser);
 							<!-- First Name -->
 							<div class="fieldset form_spacing">
 								<input class="form_inputs" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)"/>
-								<label class="form_labels" for="form_input_first_name">First Name</label>
+								<label class="form_labels" id="label_first_name" for="form_input_first_name">First Name</label>
 								<div id="form_input_first_name_help" class="form_inputs_help hide" >
 									Please provide your first name
 								</div>
@@ -116,7 +116,7 @@ Variable.SetValue("@broswer",browser);
 							<!-- Last Name -->
 							<div class="fieldset form_spacing">
 								<input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)"/>
-								<label class="form_labels" for="form_input_last_name">Last Name</label>
+								<label class="form_labels" id="label_last_name" for="form_input_last_name">Last Name</label>
 								<div id="form_input_last_name_help" class="form_inputs_help hide">
 									Please provide your last name
 								</div>
@@ -128,13 +128,11 @@ Variable.SetValue("@broswer",browser);
 							<!-- Email Address -->
 							<div class="fieldset form_spacing">
 								<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required/>
-								<label class="form_labels" name="email" for="form_input_email">Email Address</label>
-								<div id="form_input_email_help" class="form_inputs_help hide">
-									Email address is required
-								</div>
-								<div id="form_input_email_error_text" class="form_inputs_error_text hide">
+								<label class="form_labels" id="label_email" for="form_input_email">Email Address</label>
+								<div id="form_input_error" class="form_inputs_help hide"></div>
+								<!-- <div id="form_input_email_error_text" class="form_inputs_error_text hide">
 									Please enter a valid email address
-								</div>
+								</div> -->
 							</div>
 
 							<!-- Checkboxes -->
@@ -201,36 +199,30 @@ Variable.SetValue("@broswer",browser);
 			e.preventDefault();
 			data = $(this).serialize();
 			sendToUDL({event:'newsletter_signup_complete'})
-			//$(this).find(".form_inputs").addClass("form_input_error");
-			//$(this).find(".form_labels").addClass("form_label_error");
 
-			//$(this).find("#form_input_first_name_help").addClass("hide");
-			//$(this).find("#form_input_first_name_error_text").addClass("hide");
-			//$(this).find("#form_input_last_name_help").addClass("hide");
-			//$(this).find("#form_input_last_name_error_text").addClass("hide");
-			//$(this).find("#form_input_email_help").addClass("hide");
-			//$(this).find("#form_input_email_error_text").addClass("hide");
-			//$(this).find("#form_input_checkbox_help").addClass("hide");
+			if ($(this).find("input[name='email']").val().length === 0) {
 
+				$(this).find("input[name='email']").addClass("form_input_error");
+				$(this).find("label[id='label_email']").addClass("form_label_error");
+				const form_error_el = $(this).find("div[id='form_input_error']");
+				form_error_el.removeClass("hide").text('Email address is required');
 
+			} else if (!validateEmail($(this).find("input[name='email']").val())) {
 
-			if ($(this).find("input[name='first_name']").val().length > 1 && $(this).find("input[name='last_name']").val().length > 1 && $(this).find("input[name='email']").val().length > 0 && validateEmail($(this).find("input[name='email']").val())) {
+				$(this).find("input[name='email']").addClass("form_input_error");
+				$(this).find("label[id='label_email']']").addClass("form_label_error");
+				const form_error_el = $(this).find("div[id='form_input_error']");
+				form_error_el.removeClass("hide").text('Email address is invalid');
 
-					$(this).find("input[name='first_name'],input[name='last_name'],input[name='email']").removeClass("form_input_error").removeClass("form_label_error");
+			} else {
 
-        	} else {
-
-				$(this).find("input[name='email']").val().length < 1 ? $(this).find("input[name='email']").addClass("form_input_error") : $(this).find("input[name='email']").removeClass("form_input_error");
-
-				$(this).find("label[name='email']").val().length < 1 ? $(this).find("label[name='email']").addClass("form_label_error") : $(this).find("label[name='email']").removeClass("form_label_error");
-
-
-				//$(this).find("input[name='last_name']").val().length < 1 ? $(this).find("input[name='last_name']").addClass("error") : $(this).find("input[name='last_name']").removeClass("error");
-				//$("#formAlert").html("Please provide a valid name and/or last name.");
-				return 0;
+				$(this).find("input[name='email']").removeClass("form_input_error");
+				$(this).find("label[id='label_email']").removeClass("form_label_error");
+				const form_error_el = $(this).find("div[id='form_input_error']");
+				form_error_el.addClass("hide").text('');
+				
         	}
-			//console.log(data);
-			$.ajax({
+			/*$.ajax({
 				'data': $(this).serialize(),
 				'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
 				'crossDomain': true,
@@ -239,7 +231,7 @@ Variable.SetValue("@broswer",browser);
 				'contentType': 'application/json; charset=utf-8',
 				'responseType': 'text/html',
 				'jsonpCallback': 'processJSONPResponse'
-			});
+			});*/
       });
     });
 
