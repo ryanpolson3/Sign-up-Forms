@@ -1,4 +1,4 @@
-%%[
+<!-- %%[
 set @channel = RequestParameter("channel")
 ]%%
 <script type="javascript" runat="server">
@@ -7,7 +7,7 @@ var ip = Platform.Request.ClientIP();
 var browser = Platform.Request.Browser();
 Variable.SetValue("@ip",ip);
 Variable.SetValue("@broswer",browser);
-</script>
+</script> -->
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +18,7 @@ Variable.SetValue("@broswer",browser);
       var sendToUDL = function(dLdata) {
         if (dLdata && dLdata.constructor == Object && window.JSON) {
           window.dataLayer = window.dataLayer || [];
-          console.log(window.dataLayer);
+          //console.log(window.dataLayer);
           window.dataLayer.push({
             'event':'newsletter_signup_complete'
           });
@@ -198,30 +198,33 @@ Variable.SetValue("@broswer",browser);
   <script>
    $(function () {
       $("#newsletterSignUp").submit(function (e) {
-				e.preventDefault();
-				data = $(this).serialize();
-				console.log(data);
-				sendToUDL({event:'newsletter_signup_complete'})
-				$(this).find("input").removeClass("error");
-				if ($(this).find("input[name='first_name']").val().length > 1 && $(this).find("input[name='last_name']").val().length > 1 && $(this).find("input[name='email']").val().length > 0 && validateEmail($(this).find("input[name='email']").val())) {
-					$(this).find("input[name='first_name'],input[name='last_name'],input[name='email']").removeClass("error");
-        } else {
-				$(this).find("input[name='first_name']").val().length < 1 ? $(this).find("input[name='first_name']").addClass("error") : $(this).find("input[name='first_name']").removeClass("error");
-				$(this).find("input[name='last_name']").val().length < 1 ? $(this).find("input[name='last_name']").addClass("error") : $(this).find("input[name='last_name']").removeClass("error");
-				$("#formAlert").html("Please provide a valid name and/or last name.");
+			e.preventDefault();
+			data = $(this).serialize();
+			sendToUDL({event:'newsletter_signup_complete'})
+			$(this).find("input").removeClass("form_input_error");
+			$(this).find("label").removeClass("form_label_error");
+			$(this).find(".form_input_first_name_help").addClass("error");
+			$(this).find(".form_input_first_name_error_text").addClass("error");
+
+			if ($(this).find("input[name='first_name']").val().length > 1 && $(this).find("input[name='last_name']").val().length > 1 && $(this).find("input[name='email']").val().length > 0 && validateEmail($(this).find("input[name='email']").val())) {
+					//$(this).find("input[name='first_name'],input[name='last_name'],input[name='email']").removeClass("error");
+        	} else {
+				//$(this).find("input[name='first_name']").val().length < 1 ? $(this).find("input[name='first_name']").addClass("error") : $(this).find("input[name='first_name']").removeClass("error");
+				//$(this).find("input[name='last_name']").val().length < 1 ? $(this).find("input[name='last_name']").addClass("error") : $(this).find("input[name='last_name']").removeClass("error");
+				//$("#formAlert").html("Please provide a valid name and/or last name.");
 				return 0;
-        }
-        //console.log(data);
-        $.ajax({
-          'data': $(this).serialize(),
-          'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
-          'crossDomain': true,
-          'dataType': 'jsonp',
-          'type': 'POST',
-          'contentType': 'application/json; charset=utf-8',
-          'responseType': 'text/html',
-          'jsonpCallback': 'processJSONPResponse'
-        });
+        	}
+			//console.log(data);
+			$.ajax({
+				'data': $(this).serialize(),
+				'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
+				'crossDomain': true,
+				'dataType': 'jsonp',
+				'type': 'POST',
+				'contentType': 'application/json; charset=utf-8',
+				'responseType': 'text/html',
+				'jsonpCallback': 'processJSONPResponse'
+			});
       });
     });
 

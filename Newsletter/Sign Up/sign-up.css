@@ -348,12 +348,6 @@ input:focus + label {
 }
 
 /* Errors */
-.form_label_error {
-  color: var(--red-error) !important;
-  margin-left: 3px;
-  font-size: 12px;
-}
-
 .form_input_error {
   border-color: var(--red-error) !important;
   border-style: solid;
@@ -361,19 +355,13 @@ input:focus + label {
   background: var(--white);
 }
 
-.form_inputs_help {
-  text-align: left;
-  color: var(--red-error);
-  font-family: var(--open-sans-normal);
+.form_label_error {
+  color: var(--red-error) !important;
+  margin-left: 3px;
   font-size: 12px;
-  letter-spacing: 0;
-  line-height: 17px;
-  margin-top: -15px;
-  margin-left: 2px;
-  overflow: hidden;
-  width: 100%;
 }
 
+.form_inputs_help,
 .form_inputs_error_text {
   text-align: left;
   color: var(--red-error);
@@ -381,10 +369,22 @@ input:focus + label {
   font-size: 12px;
   letter-spacing: 0;
   line-height: 17px;
-  margin-top: 2px;
   margin-left: 2px;
   overflow: hidden;
   width: 100%;
+}
+
+.form_inputs_help {
+  margin-top: -15px;
+}
+
+.form_inputs_error_text {
+  margin-top: 2px;
+}
+
+/* Hide Error Messages */
+.error {
+  display: none;
 }
 
 /* Hide Labels */
