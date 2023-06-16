@@ -187,6 +187,7 @@ Variable.SetValue("@broswer",browser);
 
 			if ($(this).find("input[name='email']").val().length === 0) {
 
+				// Error Message: Email address required
 				$(this).find("input[name='email']").addClass("form_input_error");
 				$(this).find("label[id='label_email']").addClass("form_label_error");
 				const form_error_el = $(this).find("div[id='form_input_error']");
@@ -194,6 +195,7 @@ Variable.SetValue("@broswer",browser);
 
 			} else if (!validateEmail($(this).find("input[name='email']").val())) {
 
+				// Error Message: Email address is invalid
 				$(this).find("input[name='email']").addClass("form_input_error");
 				$(this).find("label[id='label_email']").addClass("form_label_error");
 				const form_error_el = $(this).find("div[id='form_input_error']");
@@ -201,22 +203,24 @@ Variable.SetValue("@broswer",browser);
 
 			} else {
 
+				// Successful Validation: Remove all error messages and states
 				$(this).find("input[name='email']").removeClass("form_input_error");
 				$(this).find("label[id='label_email']").removeClass("form_label_error");
 				const form_error_el = $(this).find("div[id='form_input_error']");
 				form_error_el.addClass("hide").text('');
 
+				// Run AJAX
+				$.ajax({
+					'data': $(this).serialize(),
+					'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
+					'crossDomain': true,
+					'dataType': 'jsonp',
+					'type': 'POST',
+					'contentType': 'application/json; charset=utf-8',
+					'responseType': 'text/html',
+					'jsonpCallback': 'processJSONPResponse'
+				});
         	}
-			$.ajax({
-				'data': $(this).serialize(),
-				'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
-				'crossDomain': true,
-				'dataType': 'jsonp',
-				'type': 'POST',
-				'contentType': 'application/json; charset=utf-8',
-				'responseType': 'text/html',
-				'jsonpCallback': 'processJSONPResponse'
-			});
       });
 
 		// Funtion to display input labels
