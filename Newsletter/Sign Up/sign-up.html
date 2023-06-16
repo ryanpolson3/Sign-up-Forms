@@ -150,9 +150,7 @@ Variable.SetValue("@broswer",browser);
 										<label class="checkbox_label" for="checkbox3">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions" href="https://www.google.com/" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy" href="https://www.google.com/" target="_blank">Privacy Policy</a></label>
 									</div>
 								</div>
-								<div id="form_input_checkbox_help" class="form_inputs_help hide">
-									You must agree to the terms and conditions and the privacy policy in order to sign up for our newsletters
-								</div>
+								<div id="form_input_checkbox_error" class="form_inputs_help"></div>
 							</div>
 
 							<!-- Sign Up - Button -->
@@ -229,31 +227,34 @@ Variable.SetValue("@broswer",browser);
 				$(this).parent().find("label").removeClass("visibility_show");
 			}
 		});
-    });
+   });
 
-	 // Function hides form and displays thank you message
-    function processJSONPResponse(response) {
-      $("#thxlayout").show();
-      $("#text1_wrapper").hide();
-      $("#text2_wrapper").hide();
-      $("#newsletterSignUp").hide();
-    }
+	// Function hides form and displays thank you message
+	function processJSONPResponse(response) {
+		$("#thxlayout").show();
+		$("#text1_wrapper").hide();
+		$("#text2_wrapper").hide();
+		$("#newsletterSignUp").hide();
+	}
 
-	 // Function to validate email address
-    function validateEmail(email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email).toLowerCase());
-    }
+	// Function to validate email address
+	function validateEmail(email) {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(String(email).toLowerCase());
+	}
 
-	 // Function to disable sign up button unless checkbox is checked
-	 $(function() {
+	// Function to disable sign up button unless checkbox is checked
+	$(function() {
 		const button = $('#sign_up');
+		const form_input_checkbox_error = $("#form_input_checkbox_error");
 		button.attr('disabled', 'disabled');
 		$('#checkbox3').change(function(e) {
 			if (this.checked) {
 				button.removeAttr('disabled');
+				form_input_checkbox_error.addClass('hide');
 			} else {
 				button.attr('disabled', 'disabled');
+				form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
 			}
 		})
 	}); 
