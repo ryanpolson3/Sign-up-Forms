@@ -278,11 +278,16 @@ body.loading #modal_loading {
   left: 20px;
   background-color: var(--white);
   padding: 0 10px;
+  visibility: hidden;
 }
 
 .label_span {
   color: var(--lavender-gray);
   font-weight: 100;
+}
+
+.visibility_show {
+  visibility: visible;
 }
 
 .form_inputs {
@@ -343,15 +348,18 @@ input:focus-visible {
   outline-width: 1px;
 }
 
+.form_input_error:focus-visible {
+  outline: 1px solid var(--red-error) !important;
+}
+
 input:focus + label {
   color: var(--fun-blue);
 }
 
 /* Errors */
 .form_input_error {
-  border-color: var(--red-error) !important;
-  border-style: solid;
-  border-width: 1px;
+  outline: 1px solid var(--red-error) !important;
+  border: none !important;
   background: var(--white);
 }
 

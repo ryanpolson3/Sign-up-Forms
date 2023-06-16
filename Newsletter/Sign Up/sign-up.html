@@ -104,7 +104,7 @@ Variable.SetValue("@broswer",browser);
 							<!-- First Name -->
 							<div class="fieldset form_spacing">
 								<input class="form_inputs" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)"/>
-								<label class="form_labels" id="label_first_name" for="form_input_first_name">First Name</label>
+								<label class="form_labels visibility_hidden" id="label_first_name" for="form_input_first_name">First Name</label>
 								<div id="form_input_first_name_help" class="form_inputs_help hide" >
 									Please provide your first name
 								</div>
@@ -116,7 +116,7 @@ Variable.SetValue("@broswer",browser);
 							<!-- Last Name -->
 							<div class="fieldset form_spacing">
 								<input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)"/>
-								<label class="form_labels" id="label_last_name" for="form_input_last_name">Last Name</label>
+								<label class="form_labels visibility_hidden" id="label_last_name" for="form_input_last_name">Last Name</label>
 								<div id="form_input_last_name_help" class="form_inputs_help hide">
 									Please provide your last name
 								</div>
@@ -128,7 +128,7 @@ Variable.SetValue("@broswer",browser);
 							<!-- Email Address -->
 							<div class="fieldset form_spacing">
 								<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required/>
-								<label class="form_labels" id="label_email" for="form_input_email">Email Address</label>
+								<label class="form_labels visibility_hidden" id="label_email" for="form_input_email">Email Address</label>
 								<div id="form_input_error" class="form_inputs_help hide"></div>
 								<!-- <div id="form_input_email_error_text" class="form_inputs_error_text hide">
 									Please enter a valid email address
@@ -210,7 +210,7 @@ Variable.SetValue("@broswer",browser);
 			} else if (!validateEmail($(this).find("input[name='email']").val())) {
 
 				$(this).find("input[name='email']").addClass("form_input_error");
-				$(this).find("label[id='label_email']']").addClass("form_label_error");
+				$(this).find("label[id='label_email']").addClass("form_label_error");
 				const form_error_el = $(this).find("div[id='form_input_error']");
 				form_error_el.removeClass("hide").text('Email address is invalid');
 
@@ -220,9 +220,9 @@ Variable.SetValue("@broswer",browser);
 				$(this).find("label[id='label_email']").removeClass("form_label_error");
 				const form_error_el = $(this).find("div[id='form_input_error']");
 				form_error_el.addClass("hide").text('');
-				
+
         	}
-			/*$.ajax({
+			$.ajax({
 				'data': $(this).serialize(),
 				'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
 				'crossDomain': true,
@@ -231,8 +231,17 @@ Variable.SetValue("@broswer",browser);
 				'contentType': 'application/json; charset=utf-8',
 				'responseType': 'text/html',
 				'jsonpCallback': 'processJSONPResponse'
-			});*/
+			});
       });
+
+		// Funtion to display input labels
+		$("input[type='text']").on('input', function (e) {
+			if ($(this).val()) {
+				$(this).parent().find("label").addClass("visibility_show");	
+			} else {
+				$(this).parent().find("label").removeClass("visibility_show");
+			}
+		});
     });
 
 	 // Function hides form and displays thank you message
