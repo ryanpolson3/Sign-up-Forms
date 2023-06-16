@@ -114,7 +114,7 @@ body {
   font-size: 18px;
   font-weight: 700;
   display: inline-block;
-  float: right;
+  /* float: right; */
   cursor: pointer;
   margin-top: -2px;
 }
