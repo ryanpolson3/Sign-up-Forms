@@ -1,4 +1,4 @@
-%%[
+<!-- %%[
 set @channel = RequestParameter("channel")
 ]%%
 <script type="javascript" runat="server">
@@ -7,292 +7,27 @@ var ip = Platform.Request.ClientIP();
 var browser = Platform.Request.Browser();
 Variable.SetValue("@ip",ip);
 Variable.SetValue("@broswer",browser);
-</script>
+</script> -->
 <!DOCTYPE html>
 <html class="" lang="en">
   <head>
-    <link type="text/css" rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Open+Sans&amp;display=fallback">
-    <style id="element_styles" type="text/css">
-      body {
-        margin: 0;
-        padding: 0;
-        border: none;
-      }
-      body.loading {
-        overflow: hidden
-      }
-      body.loading #modal_loading {
-        display: block
-      }
-      .float_left {
-        float: left;
-      }
-      .float_right {
-        float: right;
-      }
-      #layout {
-        border-style: none;
-        border-width: 0px;
-        background: rgb(36, 36, 36);
-        width: 388px;
-        height: 156px;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-      }
-      #text1_wrapper {
-        display: block;
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        width: 370px;
-        height: 35px;
-      }
-      #text1 {
-        font-family: 'Open Sans', sans-serif;
-        font-weight: bold;
-        font-style: normal;
-        text-decoration: none;
-        text-align: left;
-        font-size: 20px;
-        color: rgb(255, 255, 255);
-      }
-      #button1_wrapper {
-        display: block;
-        position: absolute;
-        left: 245px;
-        top: 100px;
-        width: 120px;
-        height: 40px;
-        z-index: 9000;
-      }
-      .button1 {
-        font-family: 'Open Sans', sans-serif;
-        font-weight: normal;
-        font-style: normal;
-        text-decoration: none;
-        text-align: center;
-        font-size: 14px;
-        color: rgb(255, 255, 255);
-        border-style: none;
-        border-width: 0px;
-        background: rgb(144, 4, 1);
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-        border-radius: 2px;
-      }
-      .button1_hover {
-        font-family: 'Open Sans', sans-serif;
-        font-weight: normal;
-        font-style: normal;
-        text-decoration: none;
-        text-align: center;
-        font-size: 14px;
-        color: rgb(255, 255, 255);
-        border-style: none;
-        border-width: 0px;
-        background: rgb(144, 4, 1);
-        cursor: pointer;
-      }
-      .button1_focus {
-        font-family: 'Open Sans', sans-serif;
-        font-weight: normal;
-        font-style: normal;
-        text-decoration: none;
-        text-align: center;
-        font-size: 14px;
-        color: rgb(255, 255, 255);
-        border-style: none;
-        border-width: 0px;
-        background: rgb(144, 4, 1);
-        cursor: pointer;
-      }
-      #text2_wrapper {
-        display: block;
-        position: absolute;
-        left: 0px;
-        top: 40px;
-        width: 330px;
-        height: 40px;
-      }
-      #text2 {
-        font-family: 'Open Sans', sans-serif;
-        font-weight: normal;
-        font-style: normal;
-        text-decoration: none;
-        text-align: left;
-        font-size: 12px;
-        color: rgb(255, 255, 255);
-        line-height: 18px;
-      }
-      #form_wrapper {
-        display: block;
-        position: absolute;
-        left: 1px;
-        top: 85px;
-        width: 244px;
-        height: 49px;
-      }
-      .form_spacing {
-        margin-top: 15px;
-      }
-      .form_labels {
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-        font-style: normal;
-        text-decoration: none;
-        text-align: left;
-        font-size: 14px;
-        color: rgb(77, 77, 77);
-        overflow: hidden;
-      }
-      .form_labels_left {
-        float: left;
-        width: 30%;
-        height: 40px;
-        line-height: 40px;
-      }
-      .form_labels_above {
-        float: right;
-        width: 100%;
-        margin-bottom: 5px;
-      }
-      .form_labels_hide {
-        display: none;
-      }
-      .form_labels_required {
-        color: rgb(204, 0, 0);
-        margin-left: 3px;
-        font-size: 12px;
-      }
-      .form_inputs {
-        border-style: none;
-        border-radius: 2px;
-        border-width: 0px;
-        background: rgb(255, 255, 255);
-        font-family: 'Montserrat', sans-serif;
-        font-weight: normal;
-        font-style: normal;
-        text-decoration: none;
-        text-align: left;
-        font-size: 14px;
-        color: rgb(119, 119, 119);
-        width: 100%;
-        height: 40px;
-        overflow: hidden;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        padding-left: 5px;
-        padding-right: 5px;
-      }
-      ::placeholder {
-        opacity: 1;
-        color: rgb(119, 119, 119)
-      }
-      :-ms-input-placeholder {
-        color: rgb(119, 119, 119)
-      }
-      ::-ms-input-placeholder {
-        color: rgb(119, 119, 119)
-      }
-      .form_inputs_hover {
-        border-style: none;
-        border-width: 0px;
-        background: rgb(255, 255, 255);
-      }
-      .form_inputs_focus {
-        border-style: none;
-        border-width: 0px;
-        background: rgb(255, 255, 255);
-      }
-      .form_inputs_error {
-        border-style: none;
-        border-width: 0px;
-        background: rgb(255, 255, 255);
-      }
-      .form_inputs_error_text {
-        display: none;
-        text-align: left;
-        color: rgb(255, 255, 255);
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 11px;
-        margin-top: 2px;
-        margin-left: 2px;
-        overflow: hidden;
-        width: 100%;
-      }
-      .form_inputs_help {
-        text-align: left;
-        color: rgb(77, 77, 77);
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 11px;
-        margin-top: 2px;
-        margin-left: 2px;
-        overflow: hidden;
-        width: 100%;
-      }
-      .form_inputs_wrapper {
-        padding: 0;
-        float: right;
-        overflow: visible;
-        width: 100%;
-      }
-      @media screen and (max-width: 318px) {
-        #layout {
-            width: 318px;
-            height: 218px;
-        }
-        #text1_wrapper {
-            width: 284px;
-            left:17px;
-            top:30px;
-        }
-        #text1 {
-            font-size: 16px;
-            text-align: center;
-        }
-        #text2_wrapper {
-            width: 284px;
-            left:17px;
-            top: 66px;
-        }
-        #text2 {
-            font-size: 10px;
-            text-align: center;
-            line-height: 14px;
-        }
-        #form_wrapper {
-            width: 284px;
-            height: 40px;
-            top: 110px;
-            left: 17px;
-            float: none;
-        }
-        #button1_wrapper {
-            width: 284px;
-            height: 38px;
-            left: 17px;
-            top: 171px;
-            float: none;
-        }
-      }
-    </style>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&amp;display=fallback">
+    <link rel="stylesheet" href="/Sign Up | Footer/sign-up-footer.css">
   </head>
   <body>
-    <div id="layout">
+    <div class="layout">
       <div id="text1_wrapper">
-        <div id="text1">Sign up for our newsletter
+        <div class="text1">
+          Sign up for our newsletter
         </div>
       </div>
       <div id="text2_wrapper">
-        <div id="text2">Stay informed. When you sign up you'll receive our top local news stories delivered to you inbox.
+        <div class="text2">
+          Stay informed. When you sign up you'll receive our top local news stories delivered to you inbox.
         </div>
       </div>
-      <form id="footerSignUp" method="post" action="https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq">
-        <div id="form_wrapper">
+      <form id="footerSignUp" method="post" action="#">
+        <div class="form_wrapper">
           <div id="form">
             <label id="form_input_email_ada_label" for="form_input_email"
                    style="border: 0;clip: rect(0 0 0 0);height: 1px;width: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;">Your
@@ -314,12 +49,13 @@ Variable.SetValue("@broswer",browser);
               <input value="%%=v(@broswer)=%%" type="hidden" name="broswer"/>
      <input value="Footer sign-up" type="hidden" name="source"/>
             </div>
+            <div id="button1_wrapper">
+              <button id="button1" class="button1" aria-label="Submit Modal Form">SIGN
+                UP</button>
+            </div>
           </div>
         </div>
-        <div id="button1_wrapper">
-          <button id="button1" class="button1" aria-label="Submit Modal Form">SIGN
-            UP</button>
-        </div>
+        
       </form>
       <div id="thxlayout" style="display: none;">
         <div id="thxtext1_wrapper">
@@ -329,8 +65,8 @@ Variable.SetValue("@broswer",browser);
       </div>
     </div>
   </body>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script>
-  <script>
+  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script> -->
+  <!-- <script>
     $(function () {
       $("#footerSignUp").submit(function (e) {
         e.preventDefault();
@@ -375,5 +111,5 @@ Variable.SetValue("@broswer",browser);
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
     }
-  </script>
+  </script> -->
 </html>
