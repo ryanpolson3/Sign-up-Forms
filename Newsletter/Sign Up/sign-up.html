@@ -1,4 +1,4 @@
-<!-- %%[
+%%[
 set @channel = RequestParameter("channel")
 ]%%
 <script type="javascript" runat="server">
@@ -7,7 +7,7 @@ var ip = Platform.Request.ClientIP();
 var browser = Platform.Request.Browser();
 Variable.SetValue("@ip",ip);
 Variable.SetValue("@broswer",browser);
-</script> -->
+</script>
 <!DOCTYPE html>
 <html>
 
@@ -83,6 +83,7 @@ Variable.SetValue("@broswer",browser);
 	<div class="gradient2">
 		<div class="layout" >
 			<div class="layout_wrapper">
+				<span id="page_url"></span>
 				<div id="text1_wrapper">
 					<div class="text1">Sign Up</div>
 				</div>
@@ -95,7 +96,7 @@ Variable.SetValue("@broswer",browser);
 
 							<!-- Hidden Fields -->
 							<div class="hidden_fields">
-								<input value="%%=v(@channel)=%%" type="hidden" name="channel" />
+								<input id="channel" value="%%=v(@channel)=%%" type="hidden" name="channel" />
 								<input value="%%=v(@ip)=%%" type="hidden" name="ip" />
 								<input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
 								<input value="In-line sign-up" type="hidden" name="source" />
@@ -262,6 +263,15 @@ Variable.SetValue("@broswer",browser);
 			}
 		})
 	}); 
+
+	// Function to update "browse more news" link
+	$(function () {
+		//let pageUrl = 'Page Url: ' + document.getElementById("channel").value;
+		let pageUrl = 'Page Url: ' + 'https://nbc16.com/sign-up';
+		console.log(pageUrl);
+		pageUrl = document.getElementById("page_url").innerHTML;
+	});
+	
   </script> 
 
 </html>
