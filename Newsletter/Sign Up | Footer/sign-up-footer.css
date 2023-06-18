@@ -48,38 +48,40 @@ body.loading #modal_loading {
    border: none;
    background: var(--grey14);
    width: 100%;
-   height: 160px;
+   height: auto;
    margin: 0 auto;
    padding: 0;
 }
 
-#text1_wrapper {
+#text1_wrapper,
+#text2_wrapper {
    width: 100%;
+}
+
+#text1_wrapper {
    height: 35px;
 }
 
-.text1 {
-   font-family: var(--open-sans-normal);
-   color: var(--white);
-   font-size: 18px;
-   font-weight: 800;
-   letter-spacing: 0;
-   line-height: 20px;
-   text-align: center;
-}
-
 #text2_wrapper {
-   width: 100%;
    height: 40px;
 }
 
+.text1,
 .text2 {
    font-family: var(--open-sans-normal);
    color: var(--white);
-   font-size: 12px;
    letter-spacing: 0;
    line-height: 20px;
    text-align: center;
+}
+
+.text1 {
+   font-size: 18px;
+   font-weight: 800;
+}
+
+.text2 {
+   font-size: 12px;
 }
 
 .form_spacing {
@@ -147,9 +149,6 @@ body.loading #modal_loading {
 
 #button1_wrapper {
    display: block;
-   position: absolute;
-   left: 245px;
-   top: 100px;
    width: 120px;
    height: 40px;
    z-index: 9000;
@@ -252,7 +251,7 @@ float: right;
 overflow: visible;
 width: 100%;
 }
-@media screen and (max-width: 318px) {
+/* @media screen and (max-width: 318px) {
 #layout {
       width: 318px;
       height: 218px;
@@ -290,4 +289,4 @@ width: 100%;
       top: 171px;
       float: none;
 }
-}
+} */
