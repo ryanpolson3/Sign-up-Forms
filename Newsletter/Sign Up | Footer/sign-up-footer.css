@@ -56,28 +56,13 @@ body {
    border-width: 0px;
    width: 100%;
    height: 215px;
-   max-width: 475px;
    background: var(--grey-dark-2);
 }
 
 .layout_wrapper {
-   width: 300px;
+   width: 315px;
    height: 100%;
    margin: 0 auto;
-}
-
-@media screen and (min-width: 478px) {
-  .layout {
-    position: relative;
-    top: 50px;
-    padding: 70px 0 0 0;
-    height: 760px;
-    box-shadow: 0 5px 10px 0 rgba(45,45,45,0.2);
-  }
-  .layout_wrapper {
-    width: 65%;
-    max-width: 475px;
-  }
 }
 
 .hidden_fields {
@@ -169,7 +154,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0;
-  color: var(--grey-60);
+  color: var(--grey-very-dark);
   width: 100%;
   max-width: 315px;
   height: 40px;
@@ -177,7 +162,7 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding-left: 29px;
+  padding-left: 15px;
   padding-right: 5px;
   margin-bottom: 2px;
 }
@@ -340,9 +325,6 @@ input[type="checkbox"]:checked:after {
 /* Sign Up - Button */
 .sign-up_wrapper {
   display: block;
-  width: 100%;
-  max-width: 315px;
-  height: 40px;
   border-radius: 1px;
   z-index: 9000;
   padding-top: 15px;
@@ -361,7 +343,7 @@ input[type="checkbox"]:checked:after {
   border-radius: 1px;
   background: var(--red-crimson);
   width: 100%;
-  height: 100%;
+  height: 40px;
   cursor: pointer;
 }
 
@@ -409,4 +391,31 @@ input[type="checkbox"]:checked:after {
 .browse-more-news {
   line-height: 16px;
   color: var(--bright-navy-blue);
+}
+
+@media screen and (min-width: 478px) {
+   .layout,
+   .layout_wrapper {
+      margin: 0;
+   }
+
+   .layout {
+      padding: 0;
+      height: auto;
+      max-width: 384px;
+   }
+
+   .form {
+      display: flex;
+   }  
+
+   .form_inputs {
+      width: 260px;
+      border-radius: 1px 0 0 1px;
+   }
+
+   .sign-up {
+      width: 122px;
+      border-radius: 0px 1px 1px 0px;
+   }
 }
