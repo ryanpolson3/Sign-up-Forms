@@ -40,15 +40,6 @@ body {
   
 }
 
-/* Element Styles */
-/* .float_left {
-  float: left;
-}
-
-.float_right {
-  float: right;
-} */
-
 .layout {
    margin: 0 auto;
    padding: 15px 0 0 0;
@@ -180,14 +171,6 @@ body {
   color: var(--gray-medium-dark);
 }
 
-.form_inputs_hover {
-   border-color: var(--grey-light);
-   border-style: solid;
-   border-width: 1px;
-   border-radius: 2px;
-   background: rgb(255, 255, 255);
-}
-
 /* Input Focus */
 input {
   outline: none;
@@ -201,16 +184,16 @@ input:focus-visible {
   outline-width: 1px;
 }
 
-.form_input_error:focus-visible {
+/* .form_input_error:focus-visible {
   outline: 1px solid var(--red-error) !important;
 }
 
 input:focus + label {
   color: var(--fun-blue);
-}
+} */
 
 /* Errors */
-.form_input_error {
+/* .form_input_error {
   outline: 1px solid var(--red-error) !important;
   border: none !important;
   background: var(--white);
@@ -240,12 +223,12 @@ input:focus + label {
 
 .form_inputs_error_text {
   margin-top: 2px;
-}
+} */
 
 /* Hide Error Messages */
-.error {
+/* .error {
   display: none;
-}
+} */
 
 /* Hide Elements */
 .hide {
@@ -253,7 +236,7 @@ input:focus + label {
 }
 
 /* Checkboxes */
-.checkbox_wrapper {
+/* .checkbox_wrapper {
   padding-bottom: 25px
 }
 
@@ -319,7 +302,7 @@ input[type="checkbox"]:checked:after {
   font-family: var(--open-sans-norml);
   text-decoration: none;
   color: var(--bright-navy-blue);
-}
+} */
 
 
 /* Sign Up - Button */
@@ -347,7 +330,7 @@ input[type="checkbox"]:checked:after {
   cursor: pointer;
 }
 
-.sign-up:hover {
+/* .sign-up:hover {
   border-radius: 10px;
   background-color: var(--tangaroa-blue);
   box-shadow: 0 5px 10px 0 rgba(45,45,45,0.2);
@@ -362,10 +345,10 @@ input[type="checkbox"]:checked:after {
   background-color: var(--grey-very-light);
   color: var(--white);
   box-shadow: none;
-}
+} */
 
 /* Thank you for subscribing */
-.thxtext1_wrapper {
+/* .thxtext1_wrapper {
   padding-top: 30px;
   padding-bottom: 20px;
 }
@@ -391,7 +374,7 @@ input[type="checkbox"]:checked:after {
 .browse-more-news {
   line-height: 16px;
   color: var(--bright-navy-blue);
-}
+} */
 
 @media screen and (min-width: 478px) {
    .layout,
