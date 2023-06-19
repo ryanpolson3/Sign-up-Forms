@@ -28,22 +28,6 @@ Variable.SetValue("@broswer",browser);
       </div>
       <form id="footerSignUp" method="post" action="#">
         <div class="form_wrapper">
-          <div id="form">
-            <label id="form_input_email_ada_label" for="form_input_email">Your Email</label>
-            <div id="form_label_email" class="form_labels form_spacing form_labels_hide">
-              Your Email
-              <span id="form_label_email_required" class="form_labels_required">*required</span>
-            </div>
-            <div id="form_input_email_wrapper" class="form_inputs_wrapper form_spacing">
-              <input
-                     type="text" id="form_input_email" name="form_input_email" class="form_inputs"
-                     placeholder="johndoe@gmail.com">
-              <div id="form_input_email_help" class="form_inputs_help" style="display: none;">
-              </div>
-              <div id="form_input_email_error_text" class="form_inputs_error_text">
-              </div>
-     
-            </div>
 
             <!-- Hidden Fields -->
             <input value="%%=v(@channel)=%%" type="hidden" name="channel"/>
@@ -58,11 +42,12 @@ Variable.SetValue("@broswer",browser);
               <!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
             </div>
 
-            <div id="button1_wrapper">
-              <button id="button1" class="button1" aria-label="Submit Modal Form">SIGN
-                UP</button>
+            <!-- Sign Up - Button -->
+            <div class="fieldset sign-up_wrapper" >
+              <button id="sign_up" class="sign-up" name="sign_up" aria-label="Submit Modal Form">
+                Sign Up
+              </button>
             </div>
-          </div>
         </div>
         
       </form>

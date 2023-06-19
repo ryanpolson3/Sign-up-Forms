@@ -59,11 +59,12 @@ body.loading #modal_loading {
 }
 
 #text1_wrapper {
-   height: 35px;
+   padding-top: 15px;
+
 }
 
 #text2_wrapper {
-   height: 40px;
+   padding-top: 30px;
 }
 
 .text1,
@@ -76,12 +77,14 @@ body.loading #modal_loading {
 }
 
 .text1 {
-   font-size: 18px;
+   font-size: 2.5rem;
    font-weight: 800;
+   line-height: 2.5rem;
 }
 
 .text2 {
-   font-size: 12px;
+   font-size: 1.7rem;
+   line-height: 2.5rem;
 }
 
 .form_spacing {
@@ -91,9 +94,12 @@ body.loading #modal_loading {
 .form_wrapper {
    display: flex;
    flex-direction: column;
-   flex-wrap: nowrap;
-   justify-content: center;
    align-items: center;
+}
+
+.fieldset {
+   margin-top: 15px;
+   width: 95%;
 }
 
 .form_labels {
@@ -130,16 +136,16 @@ body.loading #modal_loading {
    background: var(--white);
    font-family: var(--open-sans-normal);
    text-align: left;
-   font-size: 14px;
+   font-size: 21px;
    color: rgb(119, 119, 119);
    width: 100%;
-   height: 40px;
+   height: 60px;
    overflow: hidden;
    -webkit-box-sizing: border-box;
    -moz-box-sizing: border-box;
    box-sizing: border-box;
-   padding-left: 5px;
-   padding-right: 5px;
+   padding-left: 15px;
+   padding-right: 15px;
 }
 
 /* Hide Labels */
@@ -147,14 +153,14 @@ body.loading #modal_loading {
    display: none;
 }
 
-#button1_wrapper {
+.sign-up_wrapper {
    display: block;
-   width: 120px;
+   width: 43.5%;
    height: 40px;
    z-index: 9000;
 }
 
-.button1 {
+.sign-up {
    font-family: var(--open-sans-normal);
    font-weight: normal;
    font-style: normal;
