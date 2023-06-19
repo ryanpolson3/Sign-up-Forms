@@ -1,6 +1,5 @@
 %%[
 set @channel = RequestParameter("channel")
-set @email = "ryanpolson3@gmail.com"
 ]%%
 <!--<script type="javascript" runat="server">
 Platform.Load("core","1"); 
@@ -88,7 +87,7 @@ Variable.SetValue("@broswer",browser);
 			<div style="display: block" id="text2_wrapper">
 				<div class="text2">Stay informed. When you sign up you will receive out top local new stories delivered to your inbox.</div>
 			</div>
-			<form style="display: block" id="newsletterSignUp" method="post" action="%%=RedirectTo(CloudPagesURL(69, email, @email))=%%" novalidate>
+			<form style="display: block" id="newsletterSignUp" method="post" action="%%=RedirectTo(CloudPagesURL(69,'email',@email))=%%" novalidate>
 				<div class="form_wrapper">
 					<div class="form">
 
@@ -119,6 +118,5 @@ Variable.SetValue("@broswer",browser);
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script>
 </body>
 </html>
