@@ -1,7 +1,8 @@
-<!-- %%[
+%%[
 set @channel = RequestParameter("channel")
+set @email = "ryanpolson3@gmail.com"
 ]%%
-<script type="javascript" runat="server">
+<!--<script type="javascript" runat="server">
 Platform.Load("core","1"); 
 var ip = Platform.Request.ClientIP();
 var browser = Platform.Request.Browser();
@@ -87,7 +88,7 @@ Variable.SetValue("@broswer",browser);
 			<div style="display: block" id="text2_wrapper">
 				<div class="text2">Stay informed. When you sign up you will receive out top local new stories delivered to your inbox.</div>
 			</div>
-			<form style="display: block" id="newsletterSignUp" method="post" action="#" novalidate>
+			<form style="display: block" id="newsletterSignUp" method="post" action="%%=RedirectTo(CloudPagesURL(69, email, @email))=%%" novalidate>
 				<div class="form_wrapper">
 					<div class="form">
 
@@ -101,7 +102,7 @@ Variable.SetValue("@broswer",browser);
 
 						<!-- Email Address -->
 						<div class="fieldset form_spacing">
-							<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="johndoe@gmail.com"/>
+							<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="johndoe@gmail.com" value=""/>
 							<label class="form_labels visibility_hidden" id="label_email" for="form_input_email">Email Address</label>
 							<!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
 				</div>
@@ -119,8 +120,5 @@ Variable.SetValue("@broswer",browser);
 		</div>
 	</div>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script>
-	<script>
-	
-	</script> 
 </body>
 </html>
