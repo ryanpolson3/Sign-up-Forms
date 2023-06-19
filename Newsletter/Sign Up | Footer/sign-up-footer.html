@@ -9,101 +9,220 @@ Variable.SetValue("@ip",ip);
 Variable.SetValue("@broswer",browser);
 </script> -->
 <!DOCTYPE html>
-<html class="" lang="en">
-  <head>
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&amp;display=fallback">
-    <link rel="stylesheet" href="/Newsletter/Sign Up | Footer/sign-up-footer.css">
-  </head>
-  <body>
-    <div class="layout">
-      <div id="text1_wrapper">
-        <div class="text1">
-          Sign up for our newsletter
-        </div>
-      </div>
-      <div id="text2_wrapper">
-        <div class="text2">
-          Stay informed. When you sign up you'll receive our top local news stories delivered to you inbox.
-        </div>
-      </div>
-      <form id="footerSignUp" method="post" action="#">
-        <div class="form_wrapper">
+<html>
 
-            <!-- Hidden Fields -->
-            <input value="%%=v(@channel)=%%" type="hidden" name="channel"/>
-            <input value="%%=v(@ip)=%%" type="hidden" name="ip"/>
-            <input value="%%=v(@broswer)=%%" type="hidden" name="broswer"/>
-            <input value="Footer sign-up" type="hidden" name="source"/>
-
-            <!-- Email Address -->
-            <div class="fieldset form_spacing">
-              <input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="johndoe@gmail.com" />
-              <!-- <label class="form_labels visibility_hidden" id="label_email" for="form_input_email">Email Address</label> -->
-              <!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
-            </div>
-
-            <!-- Sign Up - Button -->
-            <div class="fieldset sign-up_wrapper" >
-              <button id="sign_up" class="sign-up" name="sign_up" aria-label="Submit Modal Form">
-                Sign Up
-              </button>
-            </div>
-        </div>
-        
-      </form>
-      <div id="thxlayout" style="display: none;">
-        <div id="thxtext1_wrapper">
-          <div id="thxtext1">Thank you for subscribing!
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script> -->
-  <!-- <script>
-    $(function () {
-      $("#footerSignUp").submit(function (e) {
-        e.preventDefault();
-        const params = new URLSearchParams(window.location.search);
-        var channel = params.get('channel');
-        data = $(this).serialize();
-        $(this).find("input").removeClass("error");
-        if ($(this).find("input[name='email']").val().length > 0 && validateEmail($(this).find("input[name='email']").val())) {
-          $(this).find("input[name='email']").removeClass("error");
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- <script>
+      var sendToUDL = function(dLdata) {
+        if (dLdata && dLdata.constructor == Object && window.JSON) {
+          window.dataLayer = window.dataLayer || [];
+          //console.log(window.dataLayer);
+          window.dataLayer.push({
+            'event':'newsletter_signup_complete'
+          });
+          console.log('data layer push complete');
+          console.log(window.dataLayer);
         }
         else {
-          $("#formAlert").html("Please provide a valid email address.");
-          return 0;
+          console.log('ERROR: cross-domain messaging');
         }
-        //console.log(data);
-        $.ajax({
-          'data': $(this).serialize(),
-          'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
-          'crossDomain': true,
-          'dataType': 'jsonp',
-          'type': 'POST',
-          'contentType': 'application/json; charset=utf-8',
-          'responseType': 'text/html',
-          'jsonpCallback': 'processJSONPResponse'
-        }
-              );
+      };
+    </script> -->
+
+	 <!-- <script>
+      window.dataLayer = window.dataLayer || [];
+    </script> -->
+    <!-- Google Tag Manager -->
+    <!-- <script>(function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({
+          'gtm.start':
+          new Date().getTime(),event:'gtm.js'}
+                 );
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
       }
+            )(window,document,'script','dataLayer','GTM-NKJ68BG');
+    </script> -->
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager (noscript) -->
+    <!-- <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKJ68BG"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript> -->
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- <script>
+      var sendToUDL = function(dLdata) {
+        if (dLdata && dLdata.constructor == Object && window.JSON) {
+          window.dataLayer.push({
+            'event':'newsletter_signup_complete',
+          }
                                );
-    }
-     );
-    $(document).ready (function(){
-      const params = new URLSearchParams(window.location.search);
-      params.get('channel');
-    });
-    function processJSONPResponse(response) {
-      $("#thxlayout").show();
-      $("#text1_wrapper").hide();
-      $("#text2_wrapper").hide();
-      $("#footerSignUp").hide();
-    }
-    function validateEmail(email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email).toLowerCase());
-    }
-  </script> -->
+          console.log('data layer push complete');
+          console.log(window.dataLayer);
+        }
+        else {
+          console.log('ERROR: cross-domain messaging');
+        }
+      };
+    </script> -->
+	<link rel="stylesheet" href="/Newsletter/Sign Up | Footer/sign-up-footer.css">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+		<div class="layout" >
+			<div class="layout_wrapper">
+				<span id="page_url"></span>
+				<div id="text1_wrapper">
+					<div class="text1">Sign up for our newsletter</div>
+				</div>
+				<div style="display: block" id="text2_wrapper">
+					<div class="text2">Stay informed. When you sign up you will receive out top local new stories delivered to your inbox.</div>
+				</div>
+				<form style="display: block" id="newsletterSignUp" method="post" action="#" novalidate>
+					<div class="form_wrapper">
+						<div class="form">
+
+							<!-- Hidden Fields -->
+							<div class="hidden_fields">
+								<input id="channel" value="%%=v(@channel)=%%" type="hidden" name="channel" />
+								<input value="%%=v(@ip)=%%" type="hidden" name="ip" />
+								<input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
+								<input value="In-line sign-up" type="hidden" name="source" />
+							</div>
+
+							<!-- Email Address -->
+							<div class="fieldset form_spacing">
+								<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="johndoe@gmail.com" required/>
+								<label class="form_labels visibility_hidden" id="label_email" for="form_input_email">Email Address</label>
+								<div id="form_input_error" class="form_inputs_help hide"></div>
+              </div>
+
+							<!-- Sign Up - Button -->
+							<div class="fieldset sign-up_wrapper" >
+								<button id="sign_up" class="sign-up" name="sign_up" aria-label="Submit Modal Form">
+									Sign Up
+								</button>
+							</div>
+
+						</div>
+					</div>
+				</form>
+				<div id="thxlayout" style="display: none">
+					<div class="thxtext1_wrapper">
+						<div class="thxtext1">Thank you for subscribing!</div>
+						<div class="thxtext2">You may now <a href="#" target="_blank" class="browse-more-news">browse more news</a></div>
+					</div>
+				</div>
+				<!-- <span id="error_bubble" class="error-bubble" style="display: none">
+					<span id="error_message" class="error-message"></span>
+					<span id="error_close">x</span>
+				</span> -->
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script>
+  <script>
+   $(function () {
+      $("#newsletterSignUp").submit(function (e) {
+			e.preventDefault();
+			data = $(this).serialize();
+			sendToUDL({event:'newsletter_signup_complete'})
+
+			if ($(this).find("input[name='email']").val().length === 0) {
+
+				// Error Message: Email address required
+				$(this).find("input[name='email']").addClass("form_input_error");
+				$(this).find("label[id='label_email']").addClass("form_label_error");
+				const form_error_el = $(this).find("div[id='form_input_error']");
+				form_error_el.removeClass("hide").text('Email address is required');
+
+			} else if (!validateEmail($(this).find("input[name='email']").val())) {
+
+				// Error Message: Email address is invalid
+				$(this).find("input[name='email']").addClass("form_input_error");
+				$(this).find("label[id='label_email']").addClass("form_label_error");
+				const form_error_el = $(this).find("div[id='form_input_error']");
+				form_error_el.removeClass("hide").text('Email address is invalid');
+
+			} else {
+
+				// Successful Validation: Remove all error messages and states
+				$(this).find("input[name='email']").removeClass("form_input_error");
+				$(this).find("label[id='label_email']").removeClass("form_label_error");
+				const form_error_el = $(this).find("div[id='form_input_error']");
+				form_error_el.addClass("hide").text('');
+
+				// Run AJAX
+				$.ajax({
+					'data': $(this).serialize(),
+					'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
+					'crossDomain': true,
+					'dataType': 'jsonp',
+					'type': 'POST',
+					'contentType': 'application/json; charset=utf-8',
+					'responseType': 'text/html',
+					'jsonpCallback': 'processJSONPResponse'
+				});
+        	}
+      });
+
+		// Funtion to display input labels
+		$("input[type='text']").on('input', function (e) {
+			if ($(this).val()) {
+				$(this).parent().find("label").addClass("visibility_show");	
+			} else {
+				$(this).parent().find("label").removeClass("visibility_show");
+			}
+		});
+   });
+
+	// Function hides form and displays thank you message
+	function processJSONPResponse(response) {
+		$("#thxlayout").show();
+		$("#text1_wrapper").hide();
+		$("#text2_wrapper").hide();
+		$("#newsletterSignUp").hide();
+	}
+
+	// Function to validate email address
+	function validateEmail(email) {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(String(email).toLowerCase());
+	}
+
+	// Function to disable sign up button unless checkbox is checked
+	/*$(function() {
+		const button = $('#sign_up');
+		const form_input_checkbox_error = $("#form_input_checkbox_error");
+		button.attr('disabled', 'disabled');
+		$('#checkbox3').change(function(e) {
+			if (this.checked) {
+				button.removeAttr('disabled');
+				form_input_checkbox_error.addClass('hide');
+			} else {
+				button.attr('disabled', 'disabled');
+				form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
+			}
+		})
+	}); */
+
+	// Function to update "browse more news" link
+	$(function () {
+		//let pageUrl = 'Page Url: ' + document.getElementById("channel").value;
+		let pageUrl = 'Page Url: ' + 'https://nbc16.com/sign-up';
+		console.log(pageUrl);
+		pageUrl = document.getElementById("page_url").innerHTML;
+	});
+	
+  </script> 
+
 </html>
