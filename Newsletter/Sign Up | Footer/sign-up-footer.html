@@ -1,7 +1,7 @@
 %%[
 set @channel = RequestParameter("channel")
 ]%%
-<!--<script type="javascript" runat="server">
+<!-- <script type="javascript" runat="server">
 Platform.Load("core","1"); 
 var ip = Platform.Request.ClientIP();
 var browser = Platform.Request.Browser();
@@ -12,9 +12,9 @@ Variable.SetValue("@broswer",browser);
 <html>
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<!-- <script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- <script>
       var sendToUDL = function(dLdata) {
         if (dLdata && dLdata.constructor == Object && window.JSON) {
           window.dataLayer = window.dataLayer || [];
@@ -31,11 +31,11 @@ Variable.SetValue("@broswer",browser);
       };
     </script> -->
 
-	 <!-- <script>
+  <!-- <script>
       window.dataLayer = window.dataLayer || [];
     </script> -->
-    <!-- Google Tag Manager -->
-    <!-- <script>(function(w,d,s,l,i){
+  <!-- Google Tag Manager -->
+  <!-- <script>(function(w,d,s,l,i){
         w[l]=w[l]||[];
         w[l].push({
           'gtm.start':
@@ -50,14 +50,14 @@ Variable.SetValue("@broswer",browser);
       }
             )(window,document,'script','dataLayer','GTM-NKJ68BG');
     </script> -->
-    <!-- End Google Tag Manager -->
-    <!-- Google Tag Manager (noscript) -->
-    <!-- <noscript>
+  <!-- End Google Tag Manager -->
+  <!-- Google Tag Manager (noscript) -->
+  <!-- <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKJ68BG"
               height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript> -->
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- <script>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- <script>
       var sendToUDL = function(dLdata) {
         if (dLdata && dLdata.constructor == Object && window.JSON) {
           window.dataLayer.push({
@@ -72,51 +72,52 @@ Variable.SetValue("@broswer",browser);
         }
       };
     </script> -->
-	<link rel="stylesheet" href="/Newsletter/Sign Up | Footer/sign-up-footer.css">
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/Newsletter/Sign Up | Footer/sign-up-footer.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-	<div class="layout" >
-		<div class="layout_wrapper">
-			<span id="page_url"></span>
-			<div id="text1_wrapper">
-				<div class="text1">Sign up for our newsletter</div>
-			</div>
-			<div style="display: block" id="text2_wrapper">
-				<div class="text2">Stay informed. When you sign up you will receive out top local new stories delivered to your inbox.</div>
-			</div>
-			<form style="display: block" id="newsletterSignUp" method="post" action="%%=RedirectTo(CloudPagesURL(69,'email',@email))=%%" novalidate>
-				<div class="form_wrapper">
-					<div class="form">
+  <div class="layout">
+    <div class="layout_wrapper">
+      <span id="page_url"></span>
+      <div id="text1_wrapper">
+        <div class="text1">Sign up for our newsletter</div>
+      </div>
+      <div style="display: block" id="text2_wrapper">
+        <div class="text2">Stay informed. When you sign up you will receive out top local new stories delivered to your inbox.</div>
+      </div>
+      <form style="display: block" id="newsletterSignUp" method="post" action="%%=RedirectTo(CloudPagesURL(69,'email',@email))=%%" novalidate>
+        <div class="form_wrapper">
+          <div class="form">
 
-						<!-- Hidden Fields -->
-						<div class="hidden_fields">
-							<input id="channel" value="%%=v(@channel)=%%" type="hidden" name="channel" />
-							<input value="%%=v(@ip)=%%" type="hidden" name="ip" />
-							<input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
-							<input value="In-line sign-up" type="hidden" name="source" />
-						</div>
+            <!-- Hidden Fields -->
+            <div class="hidden_fields">
+              <input id="channel" value="%%=v(@channel)=%%" type="hidden" name="channel" />
+              <input value="%%=v(@ip)=%%" type="hidden" name="ip" />
+              <input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
+              <input value="In-line sign-up" type="hidden" name="source" />
+            </div>
 
-						<!-- Email Address -->
-						<div class="fieldset form_spacing">
-							<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="johndoe@gmail.com" value=""/>
-							<label class="form_labels visibility_hidden" id="label_email" for="form_input_email">Email Address</label>
-							<!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
-				</div>
+            <!-- Email Address -->
+            <div class="fieldset form_spacing">
+              <input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="johndoe@gmail.com" value="" />
+              <label class="form_labels visibility_hidden" id="label_email" for="form_input_email">Email Address</label>
+              <!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
+            </div>
 
-						<!-- Sign Up - Button -->
-						<div class="fieldset sign-up_wrapper" >
-							<button id="sign_up" class="sign-up" name="sign_up" aria-label="Submit Modal Form">
-								Sign Up
-							</button>
-						</div>
+            <!-- Sign Up - Button -->
+            <div class="fieldset sign-up_wrapper">
+              <button id="sign_up" class="sign-up" name="sign_up" aria-label="Submit To Web Form">
+                Sign Up
+              </button>
+            </div>
 
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
+
 </html>

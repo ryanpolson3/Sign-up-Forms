@@ -52,7 +52,7 @@ body {
 
 .layout_wrapper {
    width: 315px;
-   height: 100%;
+   height: auto;
    margin: 0 auto;
 }
 
@@ -184,126 +184,10 @@ input:focus-visible {
   outline-width: 1px;
 }
 
-/* .form_input_error:focus-visible {
-  outline: 1px solid var(--red-error) !important;
-}
-
-input:focus + label {
-  color: var(--fun-blue);
-} */
-
-/* Errors */
-/* .form_input_error {
-  outline: 1px solid var(--red-error) !important;
-  border: none !important;
-  background: var(--white);
-}
-
-.form_label_error {
-  color: var(--red-error) !important;
-  font-size: 12px;
-}
-
-.form_inputs_help,
-.form_inputs_error_text {
-  text-align: left;
-  color: var(--red-error);
-  font-family: var(--open-sans-normal);
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: 17px;
-  margin-left: 2px;
-  overflow: hidden;
-  width: 100%;
-}
-
-.form_inputs_help {
-  margin-top: -15px;
-}
-
-.form_inputs_error_text {
-  margin-top: 2px;
-} */
-
-/* Hide Error Messages */
-/* .error {
-  display: none;
-} */
-
 /* Hide Elements */
 .hide {
   display: none;
 }
-
-/* Checkboxes */
-/* .checkbox_wrapper {
-  padding-bottom: 25px
-}
-
-.flex {
-  display: flex;
-}
-
-.label_block {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 25px;
-  height: 25px;
-  background-color: var(--white);
-  border: 2px solid var(--gray-light);
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-}
-
-.checkbox_label {
-  width: 263px;
-  font-family: var(--open-sans-normal);
-  color: var(--grey-very-dark);
-  font-size: 12px;
-  font-weight: 100;
-  letter-spacing: 0;
-  line-height: 20px;
-  cursor: pointer;
-}
-
-input[type="checkbox"]:after {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f00c";
-  font-size: 16px;
-  color: var(--green-lime);
-  display: none;
-}
-
-input[type="checkbox"]:hover {
-  background-color: var(--white);
-}
-
-input[type="checkbox"]:checked {
-  background-color: var(--white);
-}
-
-input[type="checkbox"]:checked:after {
-  display: block;
-}
-
-.terms_and_conditions,
-.privacy_policy,
-.browse-more-news {
-  font-family: var(--open-sans-norml);
-  text-decoration: none;
-  color: var(--bright-navy-blue);
-} */
-
 
 /* Sign Up - Button */
 .sign-up_wrapper {
@@ -330,52 +214,6 @@ input[type="checkbox"]:checked:after {
   cursor: pointer;
 }
 
-/* .sign-up:hover {
-  border-radius: 10px;
-  background-color: var(--tangaroa-blue);
-  box-shadow: 0 5px 10px 0 rgba(45,45,45,0.2);
-}
-
-.sign-up:active {
-  border-radius: 10px;
-  background-color: #1F3F66;
-}
-
-.sign-up:disabled {
-  background-color: var(--grey-very-light);
-  color: var(--white);
-  box-shadow: none;
-} */
-
-/* Thank you for subscribing */
-/* .thxtext1_wrapper {
-  padding-top: 30px;
-  padding-bottom: 20px;
-}
-
-.thxtext1 {
-  font-family: var(--open-sans-normal);
-  font-weight: bold;
-  color: var(--grey-very-dark);
-  font-size: 20px;
-  text-align: center;
-}
-
-.thxtext2 {
-  font-family: var(--open-sans-normal);
-  color: var(--grey-very-dark);
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: 12px;
-  text-align: center;
-  padding-top: 20px;
-}
-
-.browse-more-news {
-  line-height: 16px;
-  color: var(--bright-navy-blue);
-} */
-
 @media screen and (min-width: 478px) {
    .layout,
    .layout_wrapper {
@@ -395,6 +233,10 @@ input[type="checkbox"]:checked:after {
    .form_inputs {
       width: 260px;
       border-radius: 1px 0 0 1px;
+   }
+
+   .text1, .text2 {
+    text-align: left;
    }
 
    .sign-up {
