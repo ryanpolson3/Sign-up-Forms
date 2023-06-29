@@ -1,5 +1,7 @@
 %%[
-set @channel = RequestParameter("channel")
+SET @channel = RequestParameter("channel")
+SET @email = RequestParameter("email")
+SET @actionUrl = CONCAT("https://www.demonews3.com/sign-up?channel=", @channel, '&email=', @email)
 ]%%
 <!-- <script type="javascript" runat="server">
 Platform.Load("core","1"); 
@@ -87,8 +89,8 @@ Variable.SetValue("@broswer",browser);
       <div style="display: block" id="text2_wrapper">
         <div class="text2">Stay informed. When you sign up you will receive out top local new stories delivered to your inbox.</div>
       </div>
-      <form style="display: block" id="newsletterSignUp" method="post" action="%%=RedirectTo(CloudPagesURL(69,'email',@email))=%%" novalidate>
-        <div class="form_wrapper">
+      <form style="display: block" id="newsletterSignUp" method="post" action="%%=RedirectTo(@actionUrl)=%%" novalidate>
+        <div class=" form_wrapper">
           <div class="form">
 
             <!-- Hidden Fields -->
