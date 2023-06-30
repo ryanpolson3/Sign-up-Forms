@@ -162,9 +162,6 @@ Variable.SetValue("@broswer",browser);
 								</button>
 							</div>
 
-							<!-- Loading Spinner -->
-							<div id="loading" class="loading hide"></div>
-
 						</div>
 					</div>
 				</form>
@@ -174,10 +171,12 @@ Variable.SetValue("@broswer",browser);
 						<div class="thxtext2">You may now <a href="#" target="_blank" class="browse-more-news">browse more news</a></div>
 					</div>
 				</div>
-				<!-- <span id="error_bubble" class="error-bubble" style="display: none">
-					<span id="error_message" class="error-message"></span>
-					<span id="error_close">x</span>
-				</span> -->
+
+			</div>
+
+			<!-- Loading Spinner -->
+			<div id="loading" class="loading_wrapper hide">
+				<div class="loading"></div>
 			</div>
 		</div>
 	</div>
@@ -190,14 +189,8 @@ Variable.SetValue("@broswer",browser);
 			data = $(this).serialize();
 			sendToUDL({ event: 'newsletter_signup_complete' })
 
-			// Loading Spinner
-			function () {
-				const spinner = $('#loading');
-
-				document.getElementById("#loading");
-			}
-
-			console.log(loading());
+			// Loading Spinner Show
+			$('#loading').removeClass("hide");
 
 			if ($(this).find("input[name='email']").val().length === 0) {
 
@@ -249,6 +242,7 @@ Variable.SetValue("@broswer",browser);
 
 	// Function hides form and displays thank you message
 	function processJSONPResponse(response) {
+		$('#loading').addClass("hide");
 		$("#thxlayout").show();
 		$("#text1_wrapper").hide();
 		$("#text2_wrapper").hide();

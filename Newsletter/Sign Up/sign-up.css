@@ -74,6 +74,13 @@ body {
   }
 }
 
+.loading_wrapper {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  z-index: 999;
+}
+
 .loading {
   display: flex;
   justify-content: center;
