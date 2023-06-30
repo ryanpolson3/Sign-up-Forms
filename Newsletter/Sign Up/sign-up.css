@@ -102,43 +102,6 @@ body {
   }
 }
 
-/* Modal Section */
-/* #modal_loading_spinner {
-  position: fixed;
-  z-index: 90001;
-  color: #0078d7;
-  font-size: 15px;
-  margin: 0;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  text-indent: -9999em;
-  -webkit-animation: load4 1.3s infinite linear;
-  animation: load4 1.3s infinite linear;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-}
-
-#modal_loading {
-  display: none;
-  position: fixed;
-  z-index: 90000;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.8);
-} */
-
-/* body.loading {
-  overflow: hidden;
-}
-
-body.loading #modal_loading {
-  display: block;
-} */
-
 /* Element Styles */
 .layout {
   margin: 0 auto;
