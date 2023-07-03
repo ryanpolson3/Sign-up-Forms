@@ -121,55 +121,35 @@ Variable.SetValue("@broswer",browser);
   <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script>
   <script>
     $(function () {
-      $("#newsletterSignUp").submit(function (e) {
-        data = $(this).serialize();
-        e.preventDefault();
+      $(document).ready(function () {
         console.log('Fired!');
 
         // Gets parent url
         var example = (window.location != window.parent.location) ? document.referrer : document.location.href;
         var substr = '/sign-up';
+        var email = $('#form_input_email').val();
 
         console.log(example);
+        console.log(email);
 
         // If the str '/sign-up' is in parent url redirect
         if (example.includes(substr)) {
           console.log('Sign Up Success! Redirecting');
           $('#newsletterSignUp').attr('action', example);
           console.log(example);
-
-          // Run AJAX
-          $.ajax({
-            'data': $(this).serialize(),
-            'url': example,
-            'crossDomain': true,
-            'dataType': 'jsonp',
-            'type': 'POST',
-            'contentType': 'application/json; charset=utf-8',
-            'responseType': 'text/html',
-            'jsonpCallback': 'processJSONPResponse'
-          });
         }
 
         // If the str '/sign-up' is not in parent url add str and then redirect  
         if (!example.includes(substr)) {
           console.log('Adding /sign-up! Redirecting');
-          var newParentUrl = example + '/sign-up';
+          var newParentUrl = example + '/sign-up' + '?emailaddr=' + email;
           $('#newsletterSignUp').attr('action', newParentUrl);
           console.log(newParentUrl);
-
-          // Run AJAX
-          $.ajax({
-            'data': $(this).serialize(),
-            'url': newParentUrl,
-            'crossDomain': true,
-            'dataType': 'jsonp',
-            'type': 'POST',
-            'contentType': 'application/json; charset=utf-8',
-            'responseType': 'text/html',
-            'jsonpCallback': 'processJSONPResponse'
-          });
         };
+      });
+
+      $("#newsletterSignUp").submit(function (e) {
+        console.log('Thank you for signing up for our newsletter!');
       });
     });
   </script>
