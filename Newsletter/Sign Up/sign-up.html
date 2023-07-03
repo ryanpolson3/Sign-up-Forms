@@ -1,5 +1,6 @@
 %%[
 set @channel = RequestParameter("channel")
+set @pageUrl = RequestParameter('PageURL')
 ]%%
 <script type="javascript" runat="server">
 Platform.Load("core","1"); 
@@ -167,6 +168,9 @@ Variable.SetValue("@broswer",browser);
 				</form>
 				<div id="thxlayout" style="display: none">
 					<div class="thxtext1_wrapper">
+						<div style="text-align: center;">
+							<p id="page_url" value=""></p>
+						</div>
 						<div class="thxtext1">Thank you for subscribing!</div>
 						<div class="thxtext2">You may now <a href="#" target="_blank" class="browse-more-news">browse more news</a></div>
 					</div>
@@ -272,12 +276,16 @@ Variable.SetValue("@broswer",browser);
 	});
 
 	// Function to update "browse more news" link
-	/*$(function () {
-		//let pageUrl = 'Page Url: ' + document.getElementById("channel").value;
-		let pageUrl = 'Page Url: ' + 'https://nbc16.com/sign-up';
-		console.log(pageUrl);
-		pageUrl = document.getElementById("page_url").innerHTML;
-	});*/
+	$(document).ready(function () {
+		// Gets Parent URL
+		var parentUrl = (window.location != window.parent.location) ? document.referrer : document.location.href;
+		var newParentUrl = parentUrl.substring(0, parentUrl.lastIndexOf('/'));
+
+		// Browse More News Link
+		const browseMoreNews = newParentUrl;
+		$('a').attr('href', browseMoreNews);
+		console.log('Browse More News: ' + browseMoreNews);
+	});
 
 </script>
 
