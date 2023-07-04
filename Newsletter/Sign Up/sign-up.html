@@ -203,6 +203,7 @@ Variable.SetValue("@broswer",browser);
 				$(this).find("label[id='label_email']").addClass("form_label_error");
 				const form_error_el = $(this).find("div[id='form_input_error']");
 				form_error_el.removeClass("hide").text('Email address is required');
+				$('#loading').addClass("hide");
 
 			} else if (!validateEmail($(this).find("input[name='email']").val())) {
 
@@ -211,6 +212,7 @@ Variable.SetValue("@broswer",browser);
 				$(this).find("label[id='label_email']").addClass("form_label_error");
 				const form_error_el = $(this).find("div[id='form_input_error']");
 				form_error_el.removeClass("hide").text('Email address is invalid');
+				$('#loading').addClass("hide");
 
 			} else {
 
