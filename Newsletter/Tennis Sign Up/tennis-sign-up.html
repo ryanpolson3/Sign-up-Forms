@@ -1,0 +1,294 @@
+%%[
+set @channel = RequestParameter("channel")
+set @pageUrl = RequestParameter('PageURL')
+]%%
+<script type="javascript" runat="server">
+Platform.Load("core","1"); 
+var ip = Platform.Request.ClientIP();
+var browser = Platform.Request.Browser();
+Variable.SetValue("@ip",ip);
+Variable.SetValue("@broswer",browser);
+</script>
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <script>
+      var sendToUDL = function (dLdata) {
+         if (dLdata && dLdata.constructor == Object && window.JSON) {
+            window.dataLayer = window.dataLayer || [];
+            //console.log(window.dataLayer);
+            window.dataLayer.push({
+               'event': 'newsletter_signup_complete'
+            });
+            console.log('data layer push complete');
+            console.log(window.dataLayer);
+         }
+         else {
+            console.log('ERROR: cross-domain messaging');
+         }
+      };
+   </script>
+
+   <!-- <script>
+      window.dataLayer = window.dataLayer || [];
+    </script> -->
+   <!-- Google Tag Manager -->
+   <!-- <script>(function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({
+          'gtm.start':
+          new Date().getTime(),event:'gtm.js'}
+                 );
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+      }
+            )(window,document,'script','dataLayer','GTM-NKJ68BG');
+    </script> -->
+   <!-- End Google Tag Manager -->
+   <!-- Google Tag Manager (noscript) -->
+   <!-- <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKJ68BG"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript> -->
+   <!-- End Google Tag Manager (noscript) -->
+   <!-- <script>
+      var sendToUDL = function(dLdata) {
+        if (dLdata && dLdata.constructor == Object && window.JSON) {
+          window.dataLayer.push({
+            'event':'newsletter_signup_complete',
+          }
+                               );
+          console.log('data layer push complete');
+          console.log(window.dataLayer);
+        }
+        else {
+          console.log('ERROR: cross-domain messaging');
+        }
+      };
+    </script> -->
+   <link rel="stylesheet" href="/Newsletter/Tennis Sign Up/tennis-sign-up.css">
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+   <!-- Font Awesome -->
+   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="gradient1">
+   <div class="gradient2">
+      <div class="layout">
+         <div class="layout_wrapper">
+            <div id="text1_wrapper">
+               <div class="text1">Sign Up</div>
+            </div>
+            <div style="display: block" id="text2_wrapper">
+               <div class="text2">Sign up for our newsletter</div>
+            </div>
+            <form style="display: block" id="newsletterSignUp" method="post" action="https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq" novalidate>
+               <div class="form_wrapper">
+                  <div class="form">
+
+                     <!-- Hidden Fields -->
+                     <div class="hidden_fields">
+                        <input id="channel" value="%%=v(@channel)=%%" type="hidden" name="channel" />
+                        <input value="%%=v(@ip)=%%" type="hidden" name="ip" />
+                        <input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
+                        <input value="In-line sign-up" type="hidden" name="source" />
+                     </div>
+
+                     <!-- First Name -->
+                     <div class="fieldset form_spacing">
+                        <input class="form_inputs" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)" />
+                        <label class="form_labels visibility_hidden" id="label_first_name" for="form_input_first_name">First Name</label>
+                        <!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
+                     </div>
+
+                     <!-- Last Name -->
+                     <div class="fieldset form_spacing">
+                        <input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)" />
+                        <label class="form_labels visibility_hidden" id="label_last_name" for="form_input_last_name">Last Name</label>
+                        <!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
+                     </div>
+
+                     <!-- Email Address -->
+                     <div class="fieldset form_spacing">
+                        <input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required />
+                        <label class="form_labels visibility_hidden" id="label_email" for="form_input_email">Email Address</label>
+                        <div id="form_input_error" class="form_inputs_help hide"></div>
+                     </div>
+
+                     <!-- Checkboxes -->
+                     <div class="fieldset form_spacing flex">
+                        <div class="checkbox_block">
+                           <input type="checkbox" id="checkbox1" class="checkbox" checked />
+                        </div>
+                        <div class="label_block">
+                           <label class="checkbox_label" for="checkbox1">Yes, I would like to recieve the Daily Newsletter and communications from LocalNews</label>
+                        </div>
+                     </div>
+
+                     <div class="fieldset form_spacing flex">
+                        <div class="checkbox_block">
+                           <input type="checkbox" id="checkbox2" class="checkbox" checked />
+                        </div>
+                        <div class="label_block">
+                           <label class="checkbox_label" for="checkbox2">Yes, I would like to recieve the Weather Newsletter from LocalNews</label>
+                        </div>
+                     </div>
+
+                     <div class="fieldset form_spacing">
+                        <div class="checkbox_wrapper flex">
+                           <div class="checkbox_block">
+                              <input type="checkbox" id="checkbox3" class="checkbox" />
+                           </div>
+                           <div class="label_block">
+                              <label class="checkbox_label" for="checkbox3">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions"
+                                    href="https://sbgi.net/terms-conditions/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy"
+                                    href="https://sbgi.net/privacy-policy/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Privacy Policy</a></label>
+                           </div>
+                        </div>
+                        <div id="form_input_checkbox_error" class="form_inputs_help"></div>
+                     </div>
+
+                     <!-- Sign Up - Button -->
+                     <div class="fieldset sign-up_wrapper">
+                        <button id="sign_up" class="sign-up" name="sign_up" aria-label="Submit Modal Form">
+                           Sign Up
+                        </button>
+                     </div>
+
+                  </div>
+               </div>
+            </form>
+            <div id="thxlayout" style="display: none">
+               <div class="thxtext1_wrapper">
+                  <div style="text-align: center;">
+                     <p id="page_url" value=""></p>
+                  </div>
+                  <div class="thxtext1">Thank you for subscribing!</div>
+                  <div class="thxtext2">You may now <a href="#" target="_blank" class="browse-more-news">browse more news</a></div>
+               </div>
+            </div>
+
+         </div>
+
+         <!-- Loading Spinner -->
+         <div id="loading" class="loading_wrapper hide">
+            <div class="loading"></div>
+         </div>
+      </div>
+   </div>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script>
+<!-- <script>
+   $(function () {
+      $("#newsletterSignUp").submit(function (e) {
+         e.preventDefault();
+         data = $(this).serialize();
+         sendToUDL({ event: 'newsletter_signup_complete' })
+
+         // Loading Spinner Show
+         $('#loading').removeClass("hide");
+
+         if ($(this).find("input[name='email']").val().length === 0) {
+
+            // Error Message: Email address required
+            $(this).find("input[name='email']").addClass("form_input_error");
+            $(this).find("label[id='label_email']").addClass("form_label_error");
+            const form_error_el = $(this).find("div[id='form_input_error']");
+            form_error_el.removeClass("hide").text('Email address is required');
+            $('#loading').addClass("hide");
+
+         } else if (!validateEmail($(this).find("input[name='email']").val())) {
+
+            // Error Message: Email address is invalid
+            $(this).find("input[name='email']").addClass("form_input_error");
+            $(this).find("label[id='label_email']").addClass("form_label_error");
+            const form_error_el = $(this).find("div[id='form_input_error']");
+            form_error_el.removeClass("hide").text('Email address is invalid');
+            $('#loading').addClass("hide");
+
+         } else {
+
+            // Successful Validation: Remove all error messages and states
+            $(this).find("input[name='email']").removeClass("form_input_error");
+            $(this).find("label[id='label_email']").removeClass("form_label_error");
+            const form_error_el = $(this).find("div[id='form_input_error']");
+            form_error_el.addClass("hide").text('');
+
+            // Run AJAX
+            $.ajax({
+               'data': $(this).serialize(),
+               'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
+               'crossDomain': true,
+               'dataType': 'jsonp',
+               'type': 'POST',
+               'contentType': 'application/json; charset=utf-8',
+               'responseType': 'text/html',
+               'jsonpCallback': 'processJSONPResponse'
+            });
+         }
+      });
+
+      // Funtion to display input labels
+      $("input[type='text']").on('input', function (e) {
+         if ($(this).val()) {
+            $(this).parent().find("label").addClass("visibility_show");
+         } else {
+            $(this).parent().find("label").removeClass("visibility_show");
+         }
+      });
+   });
+
+   // Function hides form and displays thank you message
+   function processJSONPResponse(response) {
+      $('#loading').addClass("hide");
+      $("#thxlayout").show();
+      $("#text1_wrapper").hide();
+      $("#text2_wrapper").hide();
+      $("#newsletterSignUp").hide();
+   }
+
+   // Function to validate email address
+   function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+   }
+
+   // Function to disable sign up button unless checkbox is checked
+   $(function () {
+      const button = $('#sign_up');
+      const form_input_checkbox_error = $("#form_input_checkbox_error");
+      button.attr('disabled', 'disabled');
+      $('#checkbox3').change(function (e) {
+         if (this.checked) {
+            button.removeAttr('disabled');
+            form_input_checkbox_error.addClass('hide');
+         } else {
+            button.attr('disabled', 'disabled');
+            form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
+         }
+      })
+   });
+
+   // Function to update "browse more news" link
+   $(document).ready(function () {
+      // Gets Parent URL
+      var parentUrl = (window.location != window.parent.location) ? document.referrer : document.location.href;
+      var newParentUrl = parentUrl.substring(0, parentUrl.lastIndexOf('/'));
+
+      // Browse More News Link
+      const browseMoreNews = newParentUrl;
+      $('a').attr('href', browseMoreNews);
+      console.log('Browse More News: ' + browseMoreNews);
+   });
+
+</script> -->
+
+</html>
