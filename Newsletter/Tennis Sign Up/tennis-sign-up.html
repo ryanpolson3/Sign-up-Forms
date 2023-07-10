@@ -1,6 +1,7 @@
 %%[
-set @channel = RequestParameter("channel")
-set @pageUrl = RequestParameter('PageURL')
+SET @channel = RequestParameter("channel")
+SET @termsAndConditions = "https://sbgi.net/terms-conditions/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign="
+SET @privacyPolicy = "https://sbgi.net/privacy-policy/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign="
 ]%%
 <script type="javascript" runat="server">
 Platform.Load("core","1"); 
@@ -149,8 +150,8 @@ Variable.SetValue("@broswer",browser);
                            </div>
                            <div class="label_block">
                               <label class="checkbox_label" for="checkbox3">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions"
-                                    href="https://sbgi.net/terms-conditions/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy"
-                                    href="https://sbgi.net/privacy-policy/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Privacy Policy</a></label>
+                                    href="%%=RedirectTo(@termsAndConditions)=%%" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy"
+                                    href="%%=RedirectTo(@privacyPolicy)=%%" target="_blank">Privacy Policy</a></label>
                            </div>
                         </div>
                         <div id="form_input_checkbox_error" class="form_inputs_help"></div>
