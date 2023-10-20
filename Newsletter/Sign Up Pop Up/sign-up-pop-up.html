@@ -1,0 +1,140 @@
+<div id="evg-exit-intent-popup-email-capture" data-evg-campaign-id="{{campaign}}"
+	data-evg-experience-id="{{experience}}" data-evg-user-group="{{userGroup}}"
+	aria-label="Popup{{#if header}} - {{header}}{{/if}}" role="dialog" aria-modal="true" aria-hidden="false">
+
+	<!-- Lightbox Overlay -->
+	<div class="evg-overlay" data-evg-dismissal></div>
+
+	<!-- Pop Up -->
+	<div class="evg-popup evg-style-bg">
+
+		<div class="evg-main-panel">
+
+			<!-- Close Button -->
+			<button class="evg-btn-dismissal evg-style-text" data-evg-dismissal aria-label="Close Popup" tabindex="3">
+				<img id="close-white" src="https://image.sports.sbgtv.com/lib/fe3811717164057d7c1572/m/1/bb6ded7f-3cb7-40e0-90eb-a57eb142b349.png" alt="">
+				<img id="close-black" src="https://image.sports.sbgtv.com/lib/fe3811717164057d7c1572/m/1/c867cb0f-fe5e-4f88-bd23-1897cb301c0a.png" alt="">
+			</button>
+
+			<!-- Hero Image -->
+			<img id="evg-hero_img" class="evg-hero_img" src="https://image.sports.sbgtv.com/lib/fe3811717164057d7c1572/m/1/b8f01b0c-cf7b-4d03-bfc7-691ea11b39ad.jpeg" alt="Daily News" width="100%" height="auto">
+
+			<!-- Header -->
+			<h1 id="evg-h1" class="evg-header evg-h1 evg-style-text" style="display: block;">
+				Sign up for our newsletter
+			</h1>
+
+			<!-- Sign Up Form -->
+			<form class="evg-form" id="evg-newsletterSignUp" method="post" action="https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq" aria-label="Email Signup" role="form" novalidate>
+				<div class="evg-form_wrapper">
+
+					<!-- First Name -->
+					<div class="evg-fieldset evg-form_spacing">
+						<input class="evg-form_inputs" id="evg-form_input_first_name" name="fname" type="text" aria-label="First Name" aria-required="false" tabindex="0" placeholder="First Name (optional)" />
+						<label class="evg-form_labels" id="evg-label_first_name" for="evg-form_input_first_name">First Name</label>
+						<!-- <div id="evg-form_input_error" class="evg-form_inputs_help evg-hide"></div> -->
+					</div>
+
+					<!-- Last Name -->
+					<div class="evg-fieldset">
+						<input class="evg-form_inputs" id="evg-form_input_last_name" name="lname" type="text" aria-label="Last Name" aria-required="false" tabindex="0" placeholder="Last Name (optional)" />
+						<label class="evg-form_labels" id="evg-label_last_name" for="evg-form_input_last_name">Last Name</label>
+						<!-- <div id="evg-form_input_error" class="evg-form_inputs_help evg-hide"></div> -->
+					</div>
+
+					<!-- Email Address -->
+					<div class="evg-fieldset">
+						<input class="evg-form_inputs" id="evg-form_input_email" name="email" type="text" aria-label="Email Address" aria-required="true" tabindex="0" placeholder="Email Address (required)" required />
+						<label class="evg-form_labels" id="evg-label_email" for="evg-form_input_email">Email Address</label>
+						<div id="evg-form_input_error" class="evg-form_inputs_email_help evg-hide"></div>
+					</div>
+
+					<!-- Checkboxes -->
+					<div class="evg-fieldset evg-flex">
+						<div class="evg-checkbox_block">
+							<input type="checkbox" id="evg-daily_newsletter" name="daily_newsletter" class="evg-checkbox" checked />
+						</div>
+						<div class="evg-label_block">
+							<label class="evg-checkbox_label" for="evg-daily_newsletter">Yes, I would like to receive the Daily Newsletter and communications from Demonews3</label>
+						</div>
+					</div>
+
+					<div class="evg-fieldset evg-form_spacing evg-flex">
+						<div class="evg-checkbox_block">
+							<input type="checkbox" id="evg-weather_newsletter" name="weather_newsletter" class="evg-checkbox" checked />
+						</div>
+						<div class="evg-label_block">
+							<label class="evg-checkbox_label" for="evg-weather_newsletter">Yes, I would like to receive the Weather Newsletter and communications from Demonews3</label>
+						</div>
+					</div>
+
+					<div class="evg-fieldset evg-form_spacing-lg">
+						<div class="evg-checkbox_wrapper evg-flex">
+							<div class="evg-checkbox_block">
+								<input type="checkbox" id="evg-emailConsent" name="emailConsent" class="evg-checkbox" />
+							</div>
+							<div class="evg-label_block">
+								<label class="evg-checkbox_label" for="evg-emailConsent">
+									By Signing up, I acknowledge I have read and agree to the <a class="evg-terms_and_conditions" href="https://sbgi.net/terms-conditions/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Terms &amp;
+										Conditions</a> and the <a class="evg-privacy_policy" href="https://sbgi.net/privacy-policy/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign="
+										target="_blank">Privacy Policy</a>
+								</label>
+							</div>
+						</div>
+						<div id="evg-form_input_checkbox_error" class="evg-form_inputs_help"></div>
+					</div>
+
+					<!-- Hidden Values -->
+					<input value="" type="hidden" name="channel" id="channel" />
+					<input value="Pop-up sign-up" type="hidden" name="source" />
+
+					<input value="opt-out" type="hidden" name="dailyNewsletter_consent" id="evg-dailyNewsletter_consent" />
+					<input value="opt-out" type="hidden" name="weatherNewsletter_consent" id="evg-weatherNewsletter_consent" />
+					<input value="opt-out" type="hidden" name="marketing_consent" id="evg-marketing_consent" />
+
+					<!-- Sign Up Button -->
+					<div class="evg-fieldset evg-sign-up_wrapper">
+						<button id="evg-sign_up" class="evg-cta evg-btn" tabindex="1" type="submit" name="evg-sign_up" aria-label="Sign Up">
+							Sign Up
+						</button>
+					</div>
+
+				</div>
+			</form>
+
+			<!-- Opt Out Text -->
+			<span id="evg-opt-out-msg" class="evg-opt-out-msg evg-style-text" style="display: block;" tabindex="2" data-evg-dismissal>
+				No, thank you.
+			</span>
+		</div>
+
+		<!-- Confirmation Message -->
+		<div id="evg-thxlayout" class="evg-confirm-panel" style="display: none;">
+			<div class="evg-thxcontainer">
+
+				<!-- Hero Image -->
+				<img class="evg-hero_img" src="https://image.sports.sbgtv.com/lib/fe3811717164057d7c1572/m/1/b8f01b0c-cf7b-4d03-bfc7-691ea11b39ad.jpeg" alt="Daily News" width="100%" height="auto">
+
+				<!-- Confirmation Message -->
+				<div class="evg-thxtext1_wrapper">
+					<div style="text-align: center;">
+						<div class=" evg-thxtext1 ">
+							Thank you for subscribing!
+						</div>
+					</div>
+					<div class="evg-thxtext2">
+						You may now <a href="#" class="evg-close">close this notice</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Loading Spinner -->
+		<div id="evg-loading" class="evg-loading_wrapper evg-hide">
+			<div class="evg-loading">
+			</div>
+		</div>
+
+	</div>
+</div>
