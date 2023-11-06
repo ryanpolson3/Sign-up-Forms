@@ -98,8 +98,8 @@
          var channel = window.sinclairDigital.facade.rendering.site.callLetters;
          document.getElementById('channel').value = channel;
          
-         console.log('Channel Call Letters: ' + channel);
-         console.log('Channel Input Value: ' + document.getElementById('channel').value);
+         // console.log('Channel Call Letters: ' + channel);
+         // console.log('Channel Input Value: ' + document.getElementById('channel').value);
 
          /* ==========================================================================
             Display Input Labels
