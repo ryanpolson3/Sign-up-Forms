@@ -1,0 +1,616 @@
+%%[
+SET @channel = RequestParameter("channel")
+SET @email = RequestParameter("email")
+]%%
+<script type="javascript" runat="server">
+Platform.Load("core","1"); 
+var ip = Platform.Request.ClientIP();
+var browser = Platform.Request.Browser();
+Variable.SetValue("@ip",ip);
+Variable.SetValue("@broswer",browser);
+</script>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+    /* ==========================================================================
+         Global
+      ========================================================================== */
+    :root {
+      /* Font-Family */
+      --open-sans-normal: "Open Sans", Arial, Helvetica, sans-serif;
+      --inter: "Inter", Arial, Helvetica, sans-serif;
+
+      /* Color */
+      --background: #242424;
+      --white: #ffffff;
+      --grey-very-light: #CCCCCC;
+      --light-grey: #999999;
+      --grey: #C2C8D0;
+      --dark-grey: #121212;
+      --red: #920502;
+      --apple-red: #c20808;
+      --green: #5bcd3e;
+    }
+
+    /* ==========================================================================
+         Utilities
+      ========================================================================== */
+
+    /* Hide Elements */
+    .hide {
+      display: none !important;
+    }
+
+    /* ==========================================================================
+         Errors
+      ========================================================================== */
+    .error {
+      max-width: 315px;
+      margin: 0 auto;
+    }
+
+    .form_inputs_help_mobile,
+    .form_inputs_help {
+      color: var(--apple-red);
+      text-align: left;
+      font-size: 12px;
+    }
+
+    .form_inputs_help_desktop {
+      display: none;
+    }
+
+    /* ==========================================================================
+         Reset
+      ========================================================================== */
+    * {
+      font-family: var(--open-sans-normal);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    /* ==========================================================================
+         Form
+      ========================================================================== */
+    .hidden_fields {
+      float: none;
+      clear: both;
+    }
+
+    form {
+      min-width: 316px;
+      max-width: 405px;
+      margin: 0 auto;
+      background-color: #242424;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-family: var(--inter);
+      line-height: 18px;
+      max-width: 315px;
+      margin: 0 auto;
+    }
+
+    p {
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    input {
+      width: 100%;
+      max-width: 299px;
+      height: 38px;
+      background: var(--white);
+      border: 1px solid var(--grey-very-light);
+      border-radius: 4px;
+      overflow: hidden;
+      padding: 0;
+      padding-left: 15px;
+
+      /* Input Text */
+      text-decoration: none;
+      text-align: left;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: var(--dark-grey);
+    }
+
+    ::placeholder {
+      opacity: 1;
+      color: var(--light-grey);
+    }
+
+    :-ms-input-placeholder {
+      color: var(--light-grey);
+    }
+
+    ::-ms-input-placeholder {
+      color: var(--light-grey);
+    }
+
+    /* Input Focus */
+    input:focus-visible {
+      border: 1px solid var(--grey-very-light);
+      outline: none;
+      border-radius: 4px;
+    }
+
+    label {
+      display: none;
+    }
+
+    button {
+      width: 100%;
+      max-width: 315px;
+      height: 40px;
+      border-style: none;
+      border-width: 0px;
+      border-radius: 0;
+      margin: 0;
+      padding: 0;
+      background: var(--red);
+      cursor: pointer;
+
+      /* Button Text */
+      text-decoration: none;
+      text-align: center;
+      font-size: 14px;
+      line-height: 15px;
+      letter-spacing: 0;
+      color: var(--white);
+    }
+
+    button:hover {
+      background-color: #810300;
+      box-shadow: 0 5px 10px 0 rgba(45, 45, 45, 0.2);
+    }
+
+    button:active {
+      background-color: #6D0401;
+    }
+
+    button:disabled {
+      background-color: var(--grey-very-light);
+      color: var(--white);
+      box-shadow: none;
+      cursor: default;
+    }
+
+    /* Checkboxes */
+    input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      margin: 0;
+      background-color: var(--white);
+      border: 1px solid var(--grey);
+      border-radius: 8px;
+
+      /* Display */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+
+      cursor: pointer;
+    }
+
+    .daily {
+      padding-right: 10%;
+    }
+
+    label[for="daily_newsletter"],
+    label[for="weather_newsletter"],
+    label[for="emailConsent"] {
+      display: block;
+      padding-left: 5px;
+    }
+
+    label[for="emailConsent"] {
+      max-width: 279px;
+      padding: 0;
+    }
+
+    .newsletter-consent {
+      max-width: 315px;
+      margin: 0 auto;
+      display: flex;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+    }
+
+    .tc-pp-consent {
+      max-width: 315px;
+      margin: 0 auto;
+    }
+
+    .tc-pp-consent .checkbox {
+      align-items: flex-start;
+    }
+
+    input[type="checkbox"]:after {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      font-size: 16px;
+      color: var(--green);
+      display: none;
+      content: url(https://image.sports.sbgtv.com/lib/fe3811717164057d7c1572/m/1/e311f191-fea7-47c9-85ef-c020a314f4b6.png);
+      padding-top: 3px;
+    }
+
+    input[type="checkbox"]:hover {
+      background-color: var(--white);
+    }
+
+    input[type="checkbox"]:checked {
+      background-color: var(--white);
+    }
+
+    input[type="checkbox"]:checked:after {
+      display: block;
+    }
+
+    .terms_and_conditions,
+    .privacy_policy {
+      text-decoration: none;
+      color: var(--white);
+      font-weight: bold;
+    }
+
+
+    /* ==========================================================================
+         Media Queries
+      ========================================================================== */
+    @media screen and (min-width: 387px) {
+      .mobile-only {
+        display: none;
+      }
+
+      .desktop-only {
+        display: flex;
+      }
+
+      .form_inputs_help_mobile {
+        display: none;
+      }
+
+      .form_inputs_help_desktop {
+        display: block;
+        color: var(--apple-red);
+        text-align: left;
+        font-size: 12px;
+      }
+
+      form {
+        text-align: left;
+      }
+
+      .subtitle {
+        max-width: 405px;
+        margin: 0;
+      }
+
+      .newsletter-consent,
+      .tc-pp-consent {
+        margin: 0;
+        max-width: 405px;
+      }
+
+      .daily {
+        padding-right: 18%;
+      }
+
+      label[for="daily_newsletter"],
+      label[for="weather_newsletter"],
+      label[for="emailConsent"] {
+        padding-left: 10px;
+      }
+
+      label[for="emailConsent"] {
+        max-width: 339px;
+      }
+
+      .desktop-only :first-child {
+        width: 244px;
+      }
+
+      .desktop-only :last-child {
+        width: 129px;
+      }
+
+      .desktop-only input {
+        max-width: 259px;
+        border-radius: 0;
+      }
+
+    }
+  </style>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <form id="footerNewsletterSignUp" method="post" action="" novalidate>
+    <!-- Title -->
+    <h1>Sign up for our newsletter</h1>
+    <p class="subtitle">Stay informed. When you sign up you will receive our top local new stories delivered to your inbox.</p>
+
+    <!-- Fields: Hidden -->
+    <p class="hidden_fields">
+      <input value="%%=v(@channel)=%%" type="hidden" name="channel" />
+      <input value="%%=v(@ip)=%%" type="hidden" name="ip" />
+      <input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
+      <input value="Footer sign-up" type="hidden" name="source" />
+      <input value="" type="hidden" name="email" id="email" />
+      <input value="opt-out" type="hidden" name="dailyNewsletter_consent" id="dailyNewsletter_consent" />
+      <input value="opt-out" type="hidden" name="weatherNewsletter_consent" id="weatherNewsletter_consent" />
+      <input value="opt-out" type="hidden" name="marketing_consent" id="marketing_consent" />
+    </p>
+
+    <!-- Mobile-Input: Email Address -->
+    <p class="mobile-only">
+      <input type="text" id="form_input_email" class="form_inputs" oninput="hideMobileError()" name="mobile_email" placeholder="johndoe@gmail.com" value="" />
+      <label id="label_email" for="form_input_email">Email Address</label>
+    </p>
+    <section class="error">
+      <div id="mobile_form_input_error" class="form_inputs_help_mobile hide"></div>
+    </section>
+
+    <!-- Checkboxes: Daily & Weather -->
+    <section class="newsletter-consent">
+      <p class="checkbox daily">
+        <input type="checkbox" id="daily_newsletter" name="daily_newsletter" class="checkbox" checked />
+        <label for="daily_newsletter">Daily Newsletter</label>
+      </p>
+      <p class="checkbox">
+        <input type="checkbox" id="weather_newsletter" name="weather_newsletter" class="checkbox" checked />
+        <label for="weather_newsletter">Weather Newsletter</label>
+      </p>
+    </section>
+
+    <!-- Checkbox: TC & PP -->
+    <section class="tc-pp-consent">
+      <p class="checkbox">
+        <input type="checkbox" id="emailConsent" name="emailConsent" class="checkbox" />
+        <label for="emailConsent">
+          By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions" href="%%=RedirectTo(@termsAndConditions)=%%" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy"
+            href="%%=RedirectTo(@privacyPolicy)=%%" target="_blank">Privacy Policy</a>
+        </label>
+      </p>
+      <div id="form_checkbox_error" class="form_inputs_help"></div>
+    </section>
+
+    <!-- Mobile-Button: Sign Up -->
+    <section class="mobile-only">
+      <p>
+        <button id="mobile_sign_up" class="sign-up" name="sign_up" aria-label="Sign Up">
+          Sign Up
+        </button>
+      </p>
+    </section>
+
+    <!-- Desktop Input & Button -->
+    <section class="desktop-only">
+      <p>
+        <input type="text" id="form_input_email" class="form_inputs" oninput="hideDesktopError()" name="desktop_email" placeholder="johndoe@gmail.com" value="" />
+        <label id="label_email" for="form_input_email">Email Address</label>
+      </p>
+      <p>
+        <button id="desktop_sign_up" class="sign-up" name="sign_up" aria-label="Sign Up">
+          Sign Up
+        </button>
+      </p>
+    </section>
+    <section>
+      <div id="desktop_form_input_error" class="form_inputs_help_desktop hide"></div>
+    </section>
+
+  </form>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+  <script>
+    // Listen for the message from the parent window
+    /*let url = '';
+    window.addEventListener('message', function(event) {
+      console.log('Command siteUrl: ', event.data.command);
+      if (event.data.command === 'siteUrl') {
+        var url = event.data.url;
+        // use the url
+        console.log('url from listener: ', url);
+      }
+    });*/
+
+    $(function () {
+      $("#footerNewsletterSignUp").submit(function (e) {
+        e.preventDefault();
+        data = $(this).serialize();
+        /*sendToUDL({
+           event: 'newsletter_signup_complete'
+        })*/
+
+        // Checks boolean value of checkboxes
+        $(function () {
+          //const button = $('#sign_up');
+
+          if (document.getElementById('daily_newsletter').checked) {
+            document.getElementById("dailyNewsletter_consent").value = "opt-in";
+          } else {
+            document.getElementById("dailyNewsletter_consent").value = 'opt-out';
+          }
+
+          if (document.getElementById('weather_newsletter').checked) {
+            document.getElementById("weatherNewsletter_consent").value = 'opt-in';
+          } else {
+            document.getElementById("weatherNewsletter_consent").value = 'opt-out';
+          }
+
+          if (document.getElementById('emailConsent').checked) {
+            document.getElementById("marketing_consent").value = 'opt-in';
+          } else {
+            document.getElementById("marketing_consent").value = 'opt-out';
+          }
+
+        });
+
+        // Email Check
+        if (window.innerWidth >= 388) {
+          console.log('iFrame is more than 388');
+          // The iFrame width is greater than or equal to 388 pixels.
+          if ($(this).find("input[name='desktop_email']").val().length === 0) {
+            // Error Message: Email address is required
+            const input_error = $(this).find("div[id='desktop_form_input_error']");
+            input_error.removeClass("hide").text('Email address is required');
+          }
+          else if (!validateEmail($(this).find("input[name='desktop_email']").val())) {
+            // Error Message: Email address is invalid
+            const input_error = $(this).find("div[id='desktop_form_input_error']");
+            input_error.removeClass("hide").text('Email address is invalid');
+          }
+          else {
+            // Successful Validation: Remove all error messages and states
+            const desktopEmail = $(this).find("input[name='desktop_email']").val();
+            const email = document.getElementById('email').value;
+            if (desktopEmail) {
+              document.getElementById('email').value = desktopEmail;
+            }
+            const input_error = $(this).find("div[id='desktop_form_input_error']");
+            input_error.addClass("hide").text('');
+            // Run AJAX
+            $.ajax({
+              'data': $(this).serialize(),
+              'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/4ixrreoggd4',
+              'crossDomain': true,
+              'dataType': 'jsonp',
+              'type': 'POST',
+              'contentType': 'application/json; charset=utf-8',
+              'responseType': 'text/html',
+              'jsonpCallback': 'processJSONPResponse'
+            });
+          }
+        }
+        else {
+          console.log('iFrame is less than 388');
+          // The iFrame width is less than 388 pixels.
+          if ($(this).find("input[name='mobile_email']").val().length === 0) {
+            // Error Message: Email address is required
+            const input_error = $(this).find("div[id='mobile_form_input_error']");
+            input_error.removeClass("hide").text('Email address is required');
+          }
+          else if (!validateEmail($(this).find("input[name='mobile_email']").val())) {
+            // Error Message: Email address is invalid
+            const input_error = $(this).find("div[id='mobile_form_input_error']");
+            input_error.removeClass("hide").text('Email address is invalid');
+          }
+          else {
+            // Successful Validation: Remove all error messages and states
+            const mobileEmail = $(this).find("input[name='mobile_email']").val();
+            const email = document.getElementById('email').value;
+            if (mobileEmail) {
+              document.getElementById('email').value = mobileEmail;
+            }
+            const input_error = $(this).find("div[id='mobile_form_input_error']");
+            input_error.addClass("hide").text('');
+            // Run AJAX
+            $.ajax({
+              'data': $(this).serialize(),
+              'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/4ixrreoggd4',
+              'crossDomain': true,
+              'dataType': 'jsonp',
+              'type': 'POST',
+              'contentType': 'application/json; charset=utf-8',
+              'responseType': 'text/html',
+              'jsonpCallback': 'processJSONPResponse'
+            });
+          }
+        }
+      });
+    });
+    // Function to validate email address
+    function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+    // Function to disable sign up button unless checkbox is checked
+    $(function () {
+      const desktopButton = $('#desktop_sign_up');
+      const mobileButton = $('#mobile_sign_up');
+      const form_checkbox_error = $("#form_checkbox_error");
+      desktopButton.attr('disabled', 'disabled');
+      mobileButton.attr('disabled', 'disabled');
+      $('#emailConsent').change(function (e) {
+        if (this.checked) {
+          desktopButton.removeAttr('disabled');
+          mobileButton.removeAttr('disabled');
+          form_checkbox_error.addClass('hide');
+        }
+        else {
+          desktopButton.attr('disabled', 'disabled');
+          mobileButton.attr('disabled', 'disabled');
+          form_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
+        }
+      })
+    });
+    // Function to hide mobile error message when typing in email input
+    function hideMobileError() {
+      //console.log('mobile error');
+      const mobileInputError = document.getElementById('mobile_form_input_error');
+      mobileInputError.classList.add("hide");
+    }
+    // Function to hide desktop error message when typing in email input
+    function hideDesktopError() {
+      //console.log('desktop error');
+      const desktopInputError = document.getElementById('desktop_form_input_error');
+      desktopInputError.classList.add("hide");
+    }
+    // Function to capture JSON Response from form submission
+    function processJSONPResponse(json) {
+      let type = 'success'
+      if (json.status !== 'Success') {
+        type = 'fail'
+      }
+      toastMessageShow(type);
+    }
+    // Function to show Toast Message
+    function toastMessageShow(type) {
+      let message = 'Sign Up Success';
+      if (type === 'fail') {
+        message = 'Sign Up Failed';
+      }
+      window.parent.postMessage({
+        command: 'showToast',
+        type: type,
+        message: message,
+      }, '*');
+    }
+
+  </script>
+</body>
+
+</html>
