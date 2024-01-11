@@ -18,63 +18,466 @@ Variable.SetValue("@broswer",browser);
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    <script>
       var sendToUDL = function (dLdata) {
-         if (dLdata && dLdata.constructor == Object && window.JSON) {
-            window.dataLayer = window.dataLayer || [];
-            //console.log(window.dataLayer);
-            window.dataLayer.push({
-               'event': 'newsletter_signup_complete'
-            });
-            console.log('data layer push complete');
-            console.log(window.dataLayer);
+         try {
+            var postObject = JSON.stringify({
+               event: 'newsletter_signup_complete'
+            }
+            );
+            parent.postMessage(postObject, '*');
          }
-         else {
-            console.log('ERROR: cross-domain messaging');
+         catch (e) {
+            window.console && window.console.log(e);
          }
       };
    </script>
-
-   <!-- <script>
-      window.dataLayer = window.dataLayer || [];
-    </script> -->
-   <!-- Google Tag Manager -->
-   <!-- <script>(function(w,d,s,l,i){
-        w[l]=w[l]||[];
-        w[l].push({
-          'gtm.start':
-          new Date().getTime(),event:'gtm.js'}
-                 );
-        var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-        j.async=true;
-        j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;
-        f.parentNode.insertBefore(j,f);
+   <style>
+      /* Content is hidden till page loads */
+      .hidden_until_loaded,
+      .hidden_until_loaded body,
+      .hidden_until_loaded div {
+         visibility: hidden !important;
       }
-            )(window,document,'script','dataLayer','GTM-NKJ68BG');
-    </script> -->
-   <!-- End Google Tag Manager -->
-   <!-- Google Tag Manager (noscript) -->
-   <!-- <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKJ68BG"
-              height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript> -->
-   <!-- End Google Tag Manager (noscript) -->
-   <!-- <script>
-      var sendToUDL = function(dLdata) {
-        if (dLdata && dLdata.constructor == Object && window.JSON) {
-          window.dataLayer.push({
-            'event':'newsletter_signup_complete',
-          }
-                               );
-          console.log('data layer push complete');
-          console.log(window.dataLayer);
-        }
-        else {
-          console.log('ERROR: cross-domain messaging');
-        }
-      };
-    </script> -->
-   <link rel="stylesheet" href="/Newsletter/Tennis Sign Up/tennis-sign-up.css">
+
+      /* Global Variables */
+      :root {
+         /* Font-Family */
+         --open-sans-normal: "Open Sans", Arial, Helvetica, sans-serif;
+         /* Color */
+         --white: #ffffff;
+         --black: #000000;
+         --black-light: #282828;
+         --grey-very-dark: #121212;
+         --gray-medium-dark: #a9a9a9;
+         --gray-light: #d5d5d5;
+         --grey-very-light: #cdcccc;
+         --bright-navy-blue: #2078C9;
+         --fun-blue: #1E609D;
+         --blue-st-patricks: #1f3f66;
+         --tangaroa-blue: #122B42;
+         --green-lime: #5bcd3e;
+         --red: #ff0800;
+         --cg-red: #dd3b38;
+         --red-error: #FF4747;
+         --lavender-blush: #fff4f4;
+         --lavender-gray: #C2C8D0;
+         --pantone: #d58a8a;
+         --terra-cotta: #e06666;
+      }
+
+      body {
+         margin: 0 auto;
+         padding: 0;
+         border: none;
+      }
+
+      @media screen and (min-width: 426px) {
+         .gradient1 {
+            height: 100%;
+            width: 100%;
+            background: rgb(102, 204, 51);
+            background: linear-gradient(180deg, rgba(102, 204, 51, 1) 70%, rgba(255, 255, 255, 1) 100%, rgba(2, 0, 36, 0.25253851540616246) 100%);
+            background-repeat: no-repeat;
+         }
+
+         .gradient2 {
+            height: 100%;
+            width: 100%;
+            background-repeat: no-repeat;
+            background: rgb(255, 255, 255);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+         }
+      }
+
+      .loading_wrapper {
+         position: absolute;
+         top: 40%;
+         left: 40%;
+         z-index: 999;
+      }
+
+      .loading {
+         display: flex;
+         justify-content: center;
+      }
+
+      .loading::after {
+         content: "";
+         width: 30px;
+         height: 30px;
+         border: 8px solid #dddddd;
+         border-top-color: var(--bright-navy-blue);
+         border-radius: 50%;
+         animation: loading 1s ease infinite;
+      }
+
+      @keyframes loading {
+         to {
+            transform: rotate(1turn);
+         }
+      }
+
+      /* Element Styles */
+      .layout {
+         margin: 0 auto;
+         padding: 30px 0 0 0;
+         border-style: none;
+         border-width: 0px;
+         width: 100%;
+         height: 645px;
+         max-width: 475px;
+         background: var(--white);
+      }
+
+      .layout_wrapper {
+         width: 300px;
+         height: 100%;
+         margin: 0 auto;
+      }
+
+      @media screen and (min-width: 478px) {
+         .layout {
+            position: relative;
+            top: 50px;
+            padding: 70px 0 0 0;
+            height: 655px;
+            box-shadow: 0 5px 10px 0 rgba(45, 45, 45, 0.2);
+         }
+
+         .layout_wrapper {
+            width: 65%;
+            max-width: 475px;
+         }
+      }
+
+      .hidden_fields {
+         float: none;
+         clear: both;
+      }
+
+      #text1_wrapper,
+      #text2_wrapper {
+         display: block;
+         width: 100%;
+      }
+
+      #text2_wrapper {
+         padding-top: 30px;
+         padding-bottom: 20px;
+      }
+
+      .text1 {
+         height: 20px;
+         font-family: var(--open-sans-normal);
+         font-weight: 800;
+         letter-spacing: 0.5px;
+         text-transform: uppercase;
+         line-height: 20px;
+      }
+
+      .text2 {
+         height: 27px;
+         font-family: var(--open-sans-normal);
+         font-weight: bold;
+         letter-spacing: 0;
+         line-height: 22px;
+      }
+
+      .text1,
+      .text2 {
+         text-align: center;
+         font-size: 20px;
+         color: var(--grey-very-dark);
+      }
+
+      .form_wrapper {
+         display: block;
+         width: 100%;
+         height: auto;
+      }
+
+      .fieldset {
+         padding: 0;
+         float: right;
+         overflow: visible;
+         width: 100%;
+      }
+
+      .form_spacing {
+         padding-top: 15px;
+      }
+
+      .form_labels {
+         font-family: var(--open-sans-normal);
+         font-weight: 600;
+         font-size: 12px;
+         color: var(--grey-very-dark);
+         position: relative;
+         top: -62px;
+         z-index: 1;
+         left: 20px;
+         background-color: var(--white);
+         padding: 0 10px;
+         visibility: hidden;
+      }
+
+      .label_span {
+         color: var(--lavender-gray);
+         font-weight: 100;
+      }
+
+      .visibility_show {
+         visibility: visible;
+      }
+
+      .form_inputs {
+         border: 1px solid var(--lavender-gray);
+         border-radius: 10px;
+         background: var(--white);
+         font-family: var(--open-sans-normal);
+         font-weight: normal;
+         font-style: normal;
+         text-decoration: none;
+         text-align: left;
+         font-size: 14px;
+         line-height: 16px;
+         letter-spacing: 0;
+         color: var(--grey-very-dark);
+         width: 100%;
+         height: 50px;
+         overflow: hidden;
+         -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+         box-sizing: border-box;
+         padding-left: 29px;
+         padding-right: 5px;
+         margin-bottom: 2px;
+      }
+
+      ::placeholder {
+         opacity: 1;
+         color: var(--gray-medium-dark);
+      }
+
+      :-ms-input-placeholder {
+         color: var(--gray-medium-dark);
+      }
+
+      ::-ms-input-placeholder {
+         color: var(--gray-medium-dark);
+      }
+
+      .form_inputs_hover {
+         border-color: var(--grey-light);
+         border-style: solid;
+         border-width: 1px;
+         border-radius: 2px;
+         background: rgb(255, 255, 255);
+      }
+
+      /* Input Focus */
+      input {
+         outline: none;
+         border: none;
+      }
+
+      input:focus-visible {
+         border: none;
+         outline-color: var(--bright-navy-blue);
+         outline-style: solid;
+         outline-width: 1px;
+      }
+
+      .form_input_error:focus-visible {
+         outline: 1px solid var(--red-error) !important;
+      }
+
+      input:focus+label {
+         color: var(--fun-blue);
+      }
+
+      /* Errors */
+      .form_input_error {
+         outline: 1px solid var(--red-error) !important;
+         border: none !important;
+         background: var(--white);
+      }
+
+      .form_label_error {
+         color: var(--red-error) !important;
+         font-size: 12px;
+      }
+
+      .form_inputs_help,
+      .form_inputs_error_text {
+         text-align: left;
+         color: var(--red-error);
+         font-family: var(--open-sans-normal);
+         font-size: 12px;
+         letter-spacing: 0;
+         line-height: 17px;
+         margin-left: 2px;
+         overflow: hidden;
+         width: 100%;
+      }
+
+      .form_inputs_help {
+         margin-top: -15px;
+      }
+
+      .form_inputs_error_text {
+         margin-top: 2px;
+      }
+
+      /* Hide Error Messages */
+      .error {
+         display: none;
+      }
+
+      /* Hide Elements */
+      .hide {
+         display: none;
+      }
+
+      /* Checkboxes */
+      .checkbox_wrapper {
+         padding-bottom: 25px
+      }
+
+      .flex {
+         display: flex;
+      }
+
+      .label_block {
+         padding-left: 5px;
+         padding-right: 5px;
+      }
+
+      input[type="checkbox"] {
+         appearance: none;
+         -webkit-appearance: none;
+         width: 25px;
+         height: 25px;
+         background-color: var(--white);
+         border: 2px solid var(--gray-light);
+         border-radius: 8px;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         outline: none;
+      }
+
+      .checkbox_label {
+         width: 263px;
+         font-family: var(--open-sans-normal);
+         color: var(--grey-very-dark);
+         font-size: 12px;
+         font-weight: 100;
+         letter-spacing: 0;
+         line-height: 20px;
+         cursor: pointer;
+      }
+
+      input[type="checkbox"]:after {
+         font-family: "Font Awesome 5 Free";
+         font-weight: 900;
+         content: "\f00c";
+         font-size: 16px;
+         color: var(--green-lime);
+         display: none;
+      }
+
+      input[type="checkbox"]:hover {
+         background-color: var(--white);
+      }
+
+      input[type="checkbox"]:checked {
+         background-color: var(--white);
+      }
+
+      input[type="checkbox"]:checked:after {
+         display: block;
+      }
+
+      .terms_and_conditions,
+      .privacy_policy,
+      .browse-more-news {
+         font-family: var(--open-sans-norml);
+         text-decoration: none;
+         color: var(--bright-navy-blue);
+      }
+
+      /* Sign Up - Button */
+      .sign-up_wrapper {
+         display: block;
+         width: 100%;
+         height: 60px;
+         z-index: 9000;
+         padding-top: 30px;
+      }
+
+      .sign-up {
+         font-family: var(--open-sans-normal);
+         text-decoration: none;
+         text-align: center;
+         font-size: 14px;
+         line-height: 19px;
+         color: var(--white);
+         border-style: none;
+         border-width: 0px;
+         border-radius: 10px;
+         background: var(--grey-very-dark);
+         width: 100%;
+         height: 100%;
+         cursor: pointer;
+      }
+
+      .sign-up:hover {
+         border-radius: 10px;
+         background-color: var(--black-light);
+         box-shadow: 0 5px 10px 0 rgba(45, 45, 45, 0.2);
+      }
+
+      .sign-up:active {
+         border-radius: 10px;
+         background-color: var(--black);
+      }
+
+      .sign-up:disabled {
+         background-color: var(--grey-very-light);
+         color: var(--white);
+         box-shadow: none;
+      }
+
+      /* Thank you for subscribing */
+      .thxtext1_wrapper {
+         padding-top: 30px;
+         padding-bottom: 20px;
+      }
+
+      .thxtext1 {
+         font-family: var(--open-sans-normal);
+         font-weight: bold;
+         color: var(--grey-very-dark);
+         font-size: 20px;
+         text-align: center;
+      }
+
+      .thxtext2 {
+         font-family: var(--open-sans-normal);
+         color: var(--grey-very-dark);
+         font-size: 14px;
+         letter-spacing: 0;
+         line-height: 12px;
+         text-align: center;
+         padding-top: 20px;
+      }
+
+      .browse-more-news {
+         line-height: 16px;
+         color: var(--bright-navy-blue);
+      }
+   </style>
    <!-- Google Fonts -->
    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
    <!-- Font Awesome -->
@@ -86,167 +489,176 @@ Variable.SetValue("@broswer",browser);
       <div class="layout">
          <div class="layout_wrapper">
             <div id="text1_wrapper">
-               <div class="text1">Sign Up</div>
+               <div class="text1">Sign Up
+               </div>
             </div>
             <div style="display: block" id="text2_wrapper">
-               <div class="text2">Sign up for our newsletter</div>
+               <div class="text2">Sign up for our newsletter
+               </div>
             </div>
             <form style="display: block" id="newsletterSignUp" method="post" action="https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq" novalidate>
                <div class="form_wrapper">
                   <div class="form">
-
-                     <!-- Hidden Fields -->
-                     <div class="hidden_fields">
-                        <input id="channel" value="%%=v(@channel)=%%" type="hidden" name="channel" />
-                        <input value="%%=v(@ip)=%%" type="hidden" name="ip" />
-                        <input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
-                        <input value="In-line sign-up" type="hidden" name="source" />
-                     </div>
-
                      <!-- First Name -->
                      <div class="fieldset form_spacing">
-                        <input class="form_inputs" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)" />
+                        <input class="form_inputs" type="text" id="form_input_first_name" class="form_inputs" name="fname" placeholder="First Name (optional)" />
                         <label class="form_labels visibility_hidden" id="label_first_name" for="form_input_first_name">First Name</label>
                         <!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
                      </div>
-
                      <!-- Last Name -->
                      <div class="fieldset form_spacing">
-                        <input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)" />
+                        <input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="lname" placeholder="Last Name (optional)" />
                         <label class="form_labels visibility_hidden" id="label_last_name" for="form_input_last_name">Last Name</label>
                         <!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
                      </div>
-
                      <!-- Email Address -->
                      <div class="fieldset form_spacing">
                         <input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required />
                         <label class="form_labels visibility_hidden" id="label_email" for="form_input_email">Email Address</label>
-                        <div id="form_input_error" class="form_inputs_help hide"></div>
+                        <div id="form_input_error" class="form_inputs_help hide">
+                        </div>
                      </div>
-
                      <!-- Checkboxes -->
                      <div class="fieldset form_spacing flex">
                         <div class="checkbox_block">
-                           <input type="checkbox" id="checkbox1" class="checkbox" checked />
+                           <input type="checkbox" id="daily_newsletter" name="daily_newsletter" class="checkbox" checked />
                         </div>
                         <div class="label_block">
-                           <label class="checkbox_label" for="checkbox1">Yes, I would like to recieve the Daily Newsletter and communications from LocalNews</label>
+                           <label class="checkbox_label" for="daily_newsletter">Yes, I'd like to receive the Tennis.com Newsletter and communications from %%=v(@channel)=%%</label>
                         </div>
                      </div>
-
-                     <div class="fieldset form_spacing flex">
-                        <div class="checkbox_block">
-                           <input type="checkbox" id="checkbox2" class="checkbox" checked />
-                        </div>
-                        <div class="label_block">
-                           <label class="checkbox_label" for="checkbox2">Yes, I would like to recieve the Weather Newsletter from LocalNews</label>
-                        </div>
-                     </div>
-
                      <div class="fieldset form_spacing">
                         <div class="checkbox_wrapper flex">
                            <div class="checkbox_block">
-                              <input type="checkbox" id="checkbox3" class="checkbox" />
+                              <input type="checkbox" id="emailConsent" name="emailConsent" class="checkbox" />
                            </div>
                            <div class="label_block">
-                              <label class="checkbox_label" for="checkbox3">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions"
+                              <label class="checkbox_label" for="emailConsent">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions"
                                     href="%%=RedirectTo(@termsAndConditions)=%%" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy"
                                     href="%%=RedirectTo(@privacyPolicy)=%%" target="_blank">Privacy Policy</a></label>
                            </div>
                         </div>
-                        <div id="form_input_checkbox_error" class="form_inputs_help"></div>
+                        <div id="form_input_checkbox_error" class="form_inputs_help">
+                        </div>
                      </div>
+                     <input value="%%=v(@channel)=%%" type="hidden" name="channel" />
+                     <input value="%%=v(@ip)=%%" type="hidden" name="ip" />
+                     <input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
 
+                     <input value="In-line sign-up" type="hidden" name="source" />
+                     <input value="opt-out" type="hidden" name="dailyNewsletter_consent" id="dailyNewsletter_consent" />
+                     <input value="opt-out" type="hidden" name="marketing_consent" id="marketing_consent" />
+                     <input value="false" type="hidden" name="lifeStyle" />
                      <!-- Sign Up - Button -->
                      <div class="fieldset sign-up_wrapper">
-                        <button id="sign_up" class="sign-up" name="sign_up" aria-label="Submit Modal Form">
+                        <button id="sign_up" class="sign-up" name="sign_up" aria-label="Sign Up">
                            Sign Up
                         </button>
                      </div>
-
                   </div>
                </div>
             </form>
             <div id="thxlayout" style="display: none">
                <div class="thxtext1_wrapper">
                   <div style="text-align: center;">
-                     <p id="page_url" value=""></p>
+                     <p id="page_url" value="">
+                     </p>
                   </div>
-                  <div class="thxtext1">Thank you for subscribing!</div>
-                  <div class="thxtext2">You may now <a href="#" target="_blank" class="browse-more-news">browse more news</a></div>
+                  <div class="thxtext1">Thank you for subscribing!
+                  </div>
+                  <div class="thxtext2">You may now
+                     <a href="" target="_blank" class="browse-more-news">browse more news</a>
+                  </div>
                </div>
             </div>
-
          </div>
-
          <!-- Loading Spinner -->
          <div id="loading" class="loading_wrapper hide">
-            <div class="loading"></div>
+            <div class="loading">
+            </div>
          </div>
       </div>
    </div>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script>
-<!-- <script>
+<script>
    $(function () {
       $("#newsletterSignUp").submit(function (e) {
          e.preventDefault();
          data = $(this).serialize();
-         sendToUDL({ event: 'newsletter_signup_complete' })
+         sendToUDL({
+            event: 'newsletter_signup_complete'
+         }
+         )
+         // Checks boolean value of checkboxes
+         $(function () {
+            const button = $('#sign_up');
 
+            if (document.getElementById('daily_newsletter').checked) {
+               document.getElementById("dailyNewsletter_consent").value = "opt-in";
+            } else {
+               document.getElementById("dailyNewsletter_consent").value = 'opt-out';
+            }
+
+            if (document.getElementById('emailConsent').checked) {
+               document.getElementById("marketing_consent").value = 'opt-in';
+            }
+            else {
+               document.getElementById("marketing_consent").value = 'opt-out';
+            }
+         }
+         );
          // Loading Spinner Show
          $('#loading').removeClass("hide");
-
          if ($(this).find("input[name='email']").val().length === 0) {
-
             // Error Message: Email address required
             $(this).find("input[name='email']").addClass("form_input_error");
             $(this).find("label[id='label_email']").addClass("form_label_error");
             const form_error_el = $(this).find("div[id='form_input_error']");
             form_error_el.removeClass("hide").text('Email address is required');
             $('#loading').addClass("hide");
-
-         } else if (!validateEmail($(this).find("input[name='email']").val())) {
-
+         }
+         else if (!validateEmail($(this).find("input[name='email']").val())) {
             // Error Message: Email address is invalid
             $(this).find("input[name='email']").addClass("form_input_error");
             $(this).find("label[id='label_email']").addClass("form_label_error");
             const form_error_el = $(this).find("div[id='form_input_error']");
             form_error_el.removeClass("hide").text('Email address is invalid');
             $('#loading').addClass("hide");
-
-         } else {
-
+         }
+         else {
             // Successful Validation: Remove all error messages and states
             $(this).find("input[name='email']").removeClass("form_input_error");
             $(this).find("label[id='label_email']").removeClass("form_label_error");
             const form_error_el = $(this).find("div[id='form_input_error']");
             form_error_el.addClass("hide").text('');
-
             // Run AJAX
             $.ajax({
                'data': $(this).serialize(),
-               'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
+               'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/4ixrreoggd4',
                'crossDomain': true,
                'dataType': 'jsonp',
                'type': 'POST',
                'contentType': 'application/json; charset=utf-8',
                'responseType': 'text/html',
                'jsonpCallback': 'processJSONPResponse'
-            });
+            }
+            );
          }
-      });
-
+      }
+      );
       // Funtion to display input labels
       $("input[type='text']").on('input', function (e) {
          if ($(this).val()) {
             $(this).parent().find("label").addClass("visibility_show");
-         } else {
+         }
+         else {
             $(this).parent().find("label").removeClass("visibility_show");
          }
-      });
-   });
-
+      }
+      );
+   }
+   );
    // Function hides form and displays thank you message
    function processJSONPResponse(response) {
       $('#loading').addClass("hide");
@@ -255,41 +667,40 @@ Variable.SetValue("@broswer",browser);
       $("#text2_wrapper").hide();
       $("#newsletterSignUp").hide();
    }
-
    // Function to validate email address
    function validateEmail(email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
    }
-
    // Function to disable sign up button unless checkbox is checked
    $(function () {
       const button = $('#sign_up');
       const form_input_checkbox_error = $("#form_input_checkbox_error");
       button.attr('disabled', 'disabled');
-      $('#checkbox3').change(function (e) {
+      $('#emailConsent').change(function (e) {
          if (this.checked) {
             button.removeAttr('disabled');
             form_input_checkbox_error.addClass('hide');
-         } else {
+         }
+         else {
             button.attr('disabled', 'disabled');
             form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
          }
-      })
-   });
-
+      }
+      )
+   }
+   );
    // Function to update "browse more news" link
    $(document).ready(function () {
       // Gets Parent URL
       var parentUrl = (window.location != window.parent.location) ? document.referrer : document.location.href;
       var newParentUrl = parentUrl.substring(0, parentUrl.lastIndexOf('/'));
-
       // Browse More News Link
       const browseMoreNews = newParentUrl;
-      $('a').attr('href', browseMoreNews);
+      $('.browse-more-news').attr('href', browseMoreNews);
       console.log('Browse More News: ' + browseMoreNews);
-   });
-
-</script> -->
+   }
+   );
+</script>
 
 </html>
