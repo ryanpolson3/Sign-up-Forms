@@ -194,14 +194,14 @@ Variable.SetValue("@broswer",browser);
       color: var(--white);
     }
 
-    button:hover {
+    /*button:hover {
       background-color: var(--hover-color);
       box-shadow: 0 5px 10px 0 rgba(45, 45, 45, 0.2);
     }
 
     button:active {
       background-color: var(--active-color);
-    }
+    }*/
 
     button:disabled {
       background-color: var(--grey-very-light);
@@ -376,8 +376,7 @@ Variable.SetValue("@broswer",browser);
 
     <!-- Fields: Hidden -->
     <p class="hidden_fields">
-      <input value="%%=v(@channel)=%%" type="hidden" name="channel" />
-      <!-- <input value="REFSEA" type="hidden" name="channel" id="channel" /> -->
+      <input value="%%=v(@channel)=%%" type="hidden" name="channel" id="channel" />
       <input value="%%=v(@ip)=%%" type="hidden" name="ip" />
       <input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
       <input value="Footer sign-up" type="hidden" name="source" />
@@ -402,10 +401,12 @@ Variable.SetValue("@broswer",browser);
         <input type="checkbox" id="daily_newsletter" name="daily_newsletter" class="checkbox" checked />
         <label for="daily_newsletter">Daily Newsletter</label>
       </p>
+      %%[IF (@channel != "REFSEA") THEN]%%
       <p class="checkbox">
         <input type="checkbox" id="weather_newsletter" name="weather_newsletter" class="checkbox" checked />
         <label for="weather_newsletter">Weather Newsletter</label>
       </p>
+      %%[ENDIF]%%
     </section>
 
     <!-- Checkbox: TC & PP -->
@@ -628,7 +629,7 @@ Variable.SetValue("@broswer",browser);
     }
     // Function to show Toast Message
     function toastMessageShow(type) {
-      let message = 'Sign Up Success';
+      let message = 'Sign Up Success!';
       if (type === 'fail') {
         message = 'Sign Up Failed';
       }
