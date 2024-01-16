@@ -34,6 +34,17 @@ Variable.SetValue("@broswer",browser);
       --red: #920502;
       --apple-red: #c20808;
       --green: #5bcd3e;
+      --teal: #1FBCB7;
+
+      /* Button Background */
+      --btnBackground: #920502;
+
+      /* Hover State */
+      --hover-color: #810300;
+
+      /* Active State */
+      --active-color: #6D0401;
+
     }
 
     /* ==========================================================================
@@ -94,7 +105,7 @@ Variable.SetValue("@broswer",browser);
       min-width: 316px;
       max-width: 405px;
       margin: 0 auto;
-      background-color: #242424;
+      background-color: var(--background);
       text-align: center;
     }
 
@@ -169,9 +180,9 @@ Variable.SetValue("@broswer",browser);
       border-style: none;
       border-width: 0px;
       border-radius: 0;
+      background: var(--btnBackground);
       margin: 0;
       padding: 0;
-      background: var(--red);
       cursor: pointer;
 
       /* Button Text */
@@ -184,12 +195,12 @@ Variable.SetValue("@broswer",browser);
     }
 
     button:hover {
-      background-color: #810300;
+      background-color: var(--hover-color);
       box-shadow: 0 5px 10px 0 rgba(45, 45, 45, 0.2);
     }
 
     button:active {
-      background-color: #6D0401;
+      background-color: var(--active-color);
     }
 
     button:disabled {
@@ -361,11 +372,12 @@ Variable.SetValue("@broswer",browser);
   <form id="footerNewsletterSignUp" method="post" action="" novalidate>
     <!-- Title -->
     <h1>Sign up for our newsletter</h1>
-    <p class="subtitle">Stay informed. When you sign up you will receive our top local new stories delivered to your inbox.</p>
+    <p id="subtitle" class="subtitle"></p>
 
     <!-- Fields: Hidden -->
     <p class="hidden_fields">
       <input value="%%=v(@channel)=%%" type="hidden" name="channel" />
+      <!-- <input value="REFSEA" type="hidden" name="channel" id="channel" /> -->
       <input value="%%=v(@ip)=%%" type="hidden" name="ip" />
       <input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
       <input value="Footer sign-up" type="hidden" name="source" />
@@ -436,18 +448,55 @@ Variable.SetValue("@broswer",browser);
   </form>
   <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
   <script>
-    // Listen for the message from the parent window
-    /*let url = '';
-    window.addEventListener('message', function(event) {
-      console.log('Command siteUrl: ', event.data.command);
-      if (event.data.command === 'siteUrl') {
-        var url = event.data.url;
-        // use the url
-        console.log('url from listener: ', url);
-      }
-    });*/
-
     $(function () {
+      const channel = $('#channel').val();
+      const mobileButton = $('#mobile_sign_up');
+      const desktopButton = $('#desktop_sign_up');
+      const form_checkbox_error = $("#form_checkbox_error");
+
+      // Disable Sign Up Buttons
+      desktopButton.attr('disabled', 'disabled');
+      mobileButton.attr('disabled', 'disabled');
+
+      // SET Subtitle Text
+      if (channel == "REFSEA") {
+        // Seattle Refined
+        $('#footerNewsletterSignUp').css('background-color', '#202020');
+        document.getElementById('subtitle').textContent = "Want all the latest on dining, fashion, travel, events, and more delivered straight to your inbox? Subscribe to receive exclusive newsletters and special offers from Seattle Refined! Enter your email address below to receive the latest updates.";
+      } else {
+        // News Stations
+        document.getElementById('subtitle').textContent = "Stay informed. When you sign up you will receive our top local news stories delivered to your inbox.";
+      }
+
+      // Enable/Disable Sign Up Button Based On TC & PP Checkbox 
+      $('#emailConsent').change(function (e) {
+        if (this.checked) {
+          // Button Enabled
+          desktopButton.removeAttr('disabled');
+          mobileButton.removeAttr('disabled');
+          form_checkbox_error.addClass('hide');
+          // Channel Check | Set Button Background Color
+          //console.log('CHANNEL: ', channel);
+          if (channel == "REFSEA") {
+            // Seattle Refined
+            desktopButton.css('background-color', '#1FBCB7');
+            mobileButton.css('background-color', '#1FBCB7');
+          } else {
+            // News Stations
+            desktopButton.css('background-color', '#920502');
+            mobileButton.css('background-color', '#920502');
+          }
+        } else {
+          // Button Disabled
+          desktopButton.attr('disabled', 'disabled');
+          mobileButton.attr('disabled', 'disabled');
+          desktopButton.css('background-color', '#CCCCCC');
+          mobileButton.css('background-color', '#CCCCCC');
+          form_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
+        }
+      });
+
+      // Form Submission
       $("#footerNewsletterSignUp").submit(function (e) {
         e.preventDefault();
         data = $(this).serialize();
@@ -557,26 +606,6 @@ Variable.SetValue("@broswer",browser);
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
     }
-    // Function to disable sign up button unless checkbox is checked
-    $(function () {
-      const desktopButton = $('#desktop_sign_up');
-      const mobileButton = $('#mobile_sign_up');
-      const form_checkbox_error = $("#form_checkbox_error");
-      desktopButton.attr('disabled', 'disabled');
-      mobileButton.attr('disabled', 'disabled');
-      $('#emailConsent').change(function (e) {
-        if (this.checked) {
-          desktopButton.removeAttr('disabled');
-          mobileButton.removeAttr('disabled');
-          form_checkbox_error.addClass('hide');
-        }
-        else {
-          desktopButton.attr('disabled', 'disabled');
-          mobileButton.attr('disabled', 'disabled');
-          form_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
-        }
-      })
-    });
     // Function to hide mobile error message when typing in email input
     function hideMobileError() {
       //console.log('mobile error');
