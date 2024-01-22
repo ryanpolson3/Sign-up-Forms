@@ -515,10 +515,12 @@ Variable.SetValue("@broswer",browser);
             document.getElementById("dailyNewsletter_consent").value = 'opt-out';
           }
 
-          if (document.getElementById('weather_newsletter').checked) {
-            document.getElementById("weatherNewsletter_consent").value = 'opt-in';
-          } else {
-            document.getElementById("weatherNewsletter_consent").value = 'opt-out';
+          if (channel !== "REFSEA") {
+            if (document.getElementById('weather_newsletter').checked) {
+              document.getElementById("weatherNewsletter_consent").value = 'opt-in';
+            } else {
+              document.getElementById("weatherNewsletter_consent").value = 'opt-out';
+            }
           }
 
           if (document.getElementById('emailConsent').checked) {
@@ -546,7 +548,7 @@ Variable.SetValue("@broswer",browser);
           else {
             // Successful Validation: Remove all error messages and states
             const desktopEmail = $(this).find("input[name='desktop_email']").val();
-            const email = document.getElementById('email').value;
+            email = document.getElementById('email').value;
             if (desktopEmail) {
               document.getElementById('email').value = desktopEmail;
             }
@@ -563,6 +565,8 @@ Variable.SetValue("@broswer",browser);
               'responseType': 'text/html',
               'jsonpCallback': 'processJSONPResponse'
             });
+            // Reset Form
+            document.getElementById("footerNewsletterSignUp").reset();
           }
         }
         else {
@@ -598,6 +602,8 @@ Variable.SetValue("@broswer",browser);
               'responseType': 'text/html',
               'jsonpCallback': 'processJSONPResponse'
             });
+            // Reset Form
+            document.getElementById("footerNewsletterSignUp").reset();
           }
         }
       });
