@@ -525,10 +525,12 @@ Variable.SetValue("@broswer",browser);
             document.getElementById("dailyNewsletter_consent").value = 'opt-out';
           }
           // Weather_Newsletter Consent
-          if (document.getElementById('weather_newsletter').checked) {
-            document.getElementById("weatherNewsletter_consent").value = 'opt-in';
-          } else {
-            document.getElementById("weatherNewsletter_consent").value = 'opt-out';
+          if (channel != "REFSEA") {
+            if (document.getElementById('weather_newsletter').checked) {
+              document.getElementById("weatherNewsletter_consent").value = 'opt-in';
+            } else {
+              document.getElementById("weatherNewsletter_consent").value = 'opt-out';
+            }
           }
           // Email Consent
           if (document.getElementById('emailConsent').checked) {
@@ -565,7 +567,7 @@ Variable.SetValue("@broswer",browser);
             // Run AJAX
             $.ajax({
               'data': $(this).serialize(),
-              'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/4ixrreoggd4',
+              'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xh2bdpjjvec',
               'crossDomain': true,
               'dataType': 'jsonp',
               'type': 'POST',
