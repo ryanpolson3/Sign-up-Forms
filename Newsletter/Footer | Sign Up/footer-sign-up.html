@@ -383,7 +383,7 @@ Variable.SetValue("@broswer",browser);
       <input value="" type="hidden" name="email" id="email" />
       <input value="opt-out" type="hidden" name="dailyNewsletter_consent" id="dailyNewsletter_consent" />
       <input value="opt-out" type="hidden" name="weatherNewsletter_consent" id="weatherNewsletter_consent" />
-      <input value="False" type="hidden" name="lifeStyleNewsletter_consent" id="lifeStyleNewsletter_consent" />
+      <input value="True" type="hidden" name="lifeStyle" />
       <input value="opt-out" type="hidden" name="marketing_consent" id="marketing_consent" />
     </p>
 
@@ -397,25 +397,27 @@ Variable.SetValue("@broswer",browser);
     </section>
 
     <!-- Checkboxes: Daily & Weather -->
-    %%[IF (@channel == "REFSEA") THEN]%%
-    <section class="newsletter-consent">
-      <p class="checkbox daily">
-        <input type="checkbox" id="lifeStyle_newsletter" name="lifeStyle_newsletter" class="checkbox" checked />
-        <label for="lifeStyle_newsletter">Seattle Refined Newsletter</label>
-      </p>
-    </section>
-    %%[ELSE]%%
+    Channel: %%=v(@channel)=%%
+
+    %%[
+    IF @channel == "REFSEA" THEN
+    set @newsletterLabel = "Seattle Refined Newsletter"
+    ELSE
+    set @newsletterLabel = "Daily Newsletter"
+    ENDIF
+    ]%%
     <section class="newsletter-consent">
       <p class="checkbox daily">
         <input type="checkbox" id="daily_newsletter" name="daily_newsletter" class="checkbox" checked />
-        <label for="daily_newsletter">Daily Newsletter</label>
+        <label for="daily_newsletter">%%=v(@newsletterLabel)=%%</label>
       </p>
+      %%[ IF @channel != "REFSEA" THEN ]%%
       <p class="checkbox">
         <input type="checkbox" id="weather_newsletter" name="weather_newsletter" class="checkbox" checked />
         <label for="weather_newsletter">Weather Newsletter</label>
       </p>
+      %%[ENDIF]%%
     </section>
-    %%[ENDIF]%%
 
     <!-- Checkbox: TC & PP -->
     <section class="tc-pp-consent">
@@ -516,30 +518,19 @@ Variable.SetValue("@broswer",browser);
         // Checks boolean value of checkboxes
         $(function () {
 
-          // LifeStyle_Newsletter Consent
-          if (channel == "REFSEA") {
-            if (document.getElementById('lifeStyle_newsletter').checked) {
-              document.getElementById("lifeStyleNewsletter_consent").value = true;
-            } else {
-              document.getElementById("lifeStyleNewsletter_consent").value = false;
-            }
+          // Daily_Newsletter Consent
+          if (document.getElementById('daily_newsletter').checked) {
+            document.getElementById("dailyNewsletter_consent").value = "opt-in";
+          } else {
+            document.getElementById("dailyNewsletter_consent").value = 'opt-out';
           }
-
-          if (channel !== "REFSEA") {
-            // Daily_Newsletter Consent
-            if (document.getElementById('daily_newsletter').checked) {
-              document.getElementById("dailyNewsletter_consent").value = "opt-in";
-            } else {
-              document.getElementById("dailyNewsletter_consent").value = 'opt-out';
-            }
-            // Weather_Newsletter Consent
-            if (document.getElementById('weather_newsletter').checked) {
-              document.getElementById("weatherNewsletter_consent").value = 'opt-in';
-            } else {
-              document.getElementById("weatherNewsletter_consent").value = 'opt-out';
-            }
+          // Weather_Newsletter Consent
+          if (document.getElementById('weather_newsletter').checked) {
+            document.getElementById("weatherNewsletter_consent").value = 'opt-in';
+          } else {
+            document.getElementById("weatherNewsletter_consent").value = 'opt-out';
           }
-
+          // Email Consent
           if (document.getElementById('emailConsent').checked) {
             document.getElementById("marketing_consent").value = 'opt-in';
           } else {
