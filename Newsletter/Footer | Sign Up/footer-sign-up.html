@@ -383,8 +383,10 @@ Variable.SetValue("@broswer",browser);
       <input value="" type="hidden" name="email" id="email" />
       <input value="opt-out" type="hidden" name="dailyNewsletter_consent" id="dailyNewsletter_consent" />
       <input value="opt-out" type="hidden" name="weatherNewsletter_consent" id="weatherNewsletter_consent" />
-      <input value="True" type="hidden" name="lifeStyle" />
       <input value="opt-out" type="hidden" name="marketing_consent" id="marketing_consent" />
+      %%[ IF @channel == "REFSEA" THEN]%%
+      <input value="True" type="hidden" name="lifeStyle" />
+      %%[ENDIF]%%
     </p>
 
     <!-- Mobile-Input: Email Address -->
@@ -397,11 +399,11 @@ Variable.SetValue("@broswer",browser);
     </section>
 
     <!-- Checkboxes: Daily & Weather -->
-    Channel: %%=v(@channel)=%%
-
     %%[
     IF @channel == "REFSEA" THEN
     set @newsletterLabel = "Seattle Refined Newsletter"
+    ELSEIF @channel == "REFCIN" THEN
+    set @newsletterLabel = "Cincinnati Refined Newsletter"
     ELSE
     set @newsletterLabel = "Daily Newsletter"
     ENDIF
@@ -411,7 +413,11 @@ Variable.SetValue("@broswer",browser);
         <input type="checkbox" id="daily_newsletter" name="daily_newsletter" class="checkbox" checked />
         <label for="daily_newsletter">%%=v(@newsletterLabel)=%%</label>
       </p>
-      %%[ IF @channel != "REFSEA" THEN ]%%
+      %%[ IF @channel == "REFSEA" THEN ]%%
+
+      %%[ ELSEIF @channel == "REFCIN" THEN]%%
+
+      %%[ELSE]%%
       <p class="checkbox">
         <input type="checkbox" id="weather_newsletter" name="weather_newsletter" class="checkbox" checked />
         <label for="weather_newsletter">Weather Newsletter</label>
@@ -474,6 +480,10 @@ Variable.SetValue("@broswer",browser);
         // Seattle Refined
         $('#footerNewsletterSignUp').css('background-color', '#202020');
         document.getElementById('subtitle').textContent = "Want all the latest on dining, fashion, travel, events, and more delivered straight to your inbox? Subscribe to receive exclusive newsletters and special offers from Seattle Refined! Enter your email address below to receive the latest updates.";
+      } else if (channel == "REFCIN") {
+        // Seattle Refined
+        $('#footerNewsletterSignUp').css('background-color', '#202020');
+        document.getElementById('subtitle').textContent = "Want all the latest on dining, fashion, travel, events, and more delivered straight to your inbox? Subscribe to receive exclusive newsletters and special offers from Cincinnati Refined! Enter your email address below to receive the latest updates.";
       } else {
         // News Stations
         document.getElementById('subtitle').textContent = "Stay informed. When you sign up you will receive our top local news stories delivered to your inbox.";
@@ -567,7 +577,7 @@ Variable.SetValue("@broswer",browser);
             // Run AJAX
             $.ajax({
               'data': $(this).serialize(),
-              'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xh2bdpjjvec',
+              'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/4ixrreoggd4',
               'crossDomain': true,
               'dataType': 'jsonp',
               'type': 'POST',
