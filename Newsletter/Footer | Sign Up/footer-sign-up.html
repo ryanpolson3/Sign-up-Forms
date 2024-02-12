@@ -386,6 +386,10 @@ Variable.SetValue("@broswer",browser);
       <input value="opt-out" type="hidden" name="marketing_consent" id="marketing_consent" />
       %%[ IF @channel == "REFSEA" THEN]%%
       <input value="True" type="hidden" name="lifeStyle" />
+      %%[ ELSEIF @channel == "REFCIN" THEN]%%
+      <input value="True" type="hidden" name="lifeStyle" />
+      %%[ELSE]%%
+      <!-- Don't Show LifeStyle Hidden Field -->
       %%[ENDIF]%%
     </p>
 
@@ -414,9 +418,9 @@ Variable.SetValue("@broswer",browser);
         <label for="daily_newsletter">%%=v(@newsletterLabel)=%%</label>
       </p>
       %%[ IF @channel == "REFSEA" THEN ]%%
-
+      <!-- Don't Show Weather Checkbox -->
       %%[ ELSEIF @channel == "REFCIN" THEN]%%
-
+      <!-- Don't Show Weather Checkbox -->
       %%[ELSE]%%
       <p class="checkbox">
         <input type="checkbox" id="weather_newsletter" name="weather_newsletter" class="checkbox" checked />
@@ -481,7 +485,7 @@ Variable.SetValue("@broswer",browser);
         $('#footerNewsletterSignUp').css('background-color', '#202020');
         document.getElementById('subtitle').textContent = "Want all the latest on dining, fashion, travel, events, and more delivered straight to your inbox? Subscribe to receive exclusive newsletters and special offers from Seattle Refined! Enter your email address below to receive the latest updates.";
       } else if (channel == "REFCIN") {
-        // Seattle Refined
+        // Cincinnati Refined
         $('#footerNewsletterSignUp').css('background-color', '#202020');
         document.getElementById('subtitle').textContent = "Want all the latest on dining, fashion, travel, events, and more delivered straight to your inbox? Subscribe to receive exclusive newsletters and special offers from Cincinnati Refined! Enter your email address below to receive the latest updates.";
       } else {
