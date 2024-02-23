@@ -3,12 +3,12 @@ SET @channel = RequestParameter("channel")
 SET @email = RequestParameter("email")
 ]%%
 <script type="javascript" runat="server">
-Platform.Load("core","1"); 
-var ip = Platform.Request.ClientIP();
-var browser = Platform.Request.Browser();
-Variable.SetValue("@ip",ip);
-Variable.SetValue("@broswer",browser);
-</script>
+   Platform.Load("core","1"); 
+   var ip = Platform.Request.ClientIP();
+   var browser = Platform.Request.Browser();
+   Variable.SetValue("@ip",ip);
+   Variable.SetValue("@broswer",browser);
+   </script>
 <!DOCTYPE html>
 <html>
 
@@ -17,8 +17,8 @@ Variable.SetValue("@broswer",browser);
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <style>
     /* ==========================================================================
-        Global
-      ========================================================================== */
+           Global
+         ========================================================================== */
     :root {
       /* Font-Family */
       --open-sans-normal: "Open Sans", Arial, Helvetica, sans-serif;
@@ -48,8 +48,8 @@ Variable.SetValue("@broswer",browser);
     }
 
     /* ==========================================================================
-        Utilities
-      ========================================================================== */
+           Utilities
+         ========================================================================== */
 
     /* Hide Elements */
     .hide {
@@ -57,8 +57,8 @@ Variable.SetValue("@broswer",browser);
     }
 
     /* ==========================================================================
-        Errors
-      ========================================================================== */
+           Errors
+         ========================================================================== */
     .error {
       max-width: 315px;
       margin: 0 auto;
@@ -76,8 +76,8 @@ Variable.SetValue("@broswer",browser);
     }
 
     /* ==========================================================================
-        Reset
-      ========================================================================== */
+           Reset
+         ========================================================================== */
     * {
       font-family: var(--open-sans-normal);
     }
@@ -94,8 +94,8 @@ Variable.SetValue("@broswer",browser);
     }
 
     /* ==========================================================================
-        Form
-      ========================================================================== */
+           Form
+         ========================================================================== */
     .hidden_fields {
       float: none;
       clear: both;
@@ -195,13 +195,13 @@ Variable.SetValue("@broswer",browser);
     }
 
     /*button:hover {
-      background-color: var(--hover-color);
-      box-shadow: 0 5px 10px 0 rgba(45, 45, 45, 0.2);
-    }
-
-    button:active {
-      background-color: var(--active-color);
-    }*/
+         background-color: var(--hover-color);
+         box-shadow: 0 5px 10px 0 rgba(45, 45, 45, 0.2);
+       }
+   
+       button:active {
+         background-color: var(--active-color);
+       }*/
 
     button:disabled {
       background-color: var(--grey-very-light);
@@ -298,8 +298,8 @@ Variable.SetValue("@broswer",browser);
 
 
     /* ==========================================================================
-        Media Queries
-      ========================================================================== */
+           Media Queries
+         ========================================================================== */
     @media screen and (min-width: 387px) {
       .mobile-only {
         display: none;
@@ -506,6 +506,10 @@ Variable.SetValue("@broswer",browser);
             // Seattle Refined
             desktopButton.css('background-color', '#1FBCB7');
             mobileButton.css('background-color', '#1FBCB7');
+          } else if (channel == "REFCIN") {
+            // Cincinnati Refined
+            desktopButton.css('background-color', '#1FBCB7');
+            mobileButton.css('background-color', '#1FBCB7');
           } else {
             // News Stations
             desktopButton.css('background-color', '#920502');
@@ -539,8 +543,9 @@ Variable.SetValue("@broswer",browser);
             document.getElementById("dailyNewsletter_consent").value = 'opt-out';
           }
           // Weather_Newsletter Consent
-          if (channel != "REFSEA") {
-            if (document.getElementById('weather_newsletter').checked) {
+          let weatherNewsletterCheckbox = document.getElementById('weather_newsletter');
+          if (weatherNewsletterCheckbox) {
+            if (weatherNewsletterCheckbox.checked) {
               document.getElementById("weatherNewsletter_consent").value = 'opt-in';
             } else {
               document.getElementById("weatherNewsletter_consent").value = 'opt-out';
